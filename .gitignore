@@ -1,7 +1,0 @@
-*.pyc
-*.pyo
-*.db
-local_settings.py
-/static
-portal/migrations/
-*/migrations/
