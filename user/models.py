@@ -13,12 +13,9 @@ USER_IMAGES_PATH = '/media'
 class User(AbstractUser):
     """
     """
-    first_name = models.CharField(max_length=48, null=False, blank=False)
     middle_name = models.CharField(max_length=48, null=True, blank=True)
-    last_name = models.CharField(max_length=48, null=False, blank=False)
     birth_date = models.DateTimeField(null=True, blank=True)
     profile_pic = models.ImageField(upload_to=USER_IMAGES_PATH, null=True, blank=True)
-    is_active = models.BooleanField(default=False)
     gender = models.CharField(max_length=1, null=False,
         choices=gender_choices, verbose_name=_("gender"), blank=False)
     is_deleted = models.BooleanField(default=False)
