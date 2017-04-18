@@ -6,6 +6,8 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from common.choices import STATUS_CHOICES as status_choices
+from common.choices import NOTIFICATION_CHOICES as notification_choices
+from common.choices import *
 
 class EmailTemplate(models.Model):
     """
@@ -16,8 +18,9 @@ class EmailTemplate(models.Model):
     	verbose_name=_("name"))
     template = models.TextField(null=False,
         verbose_name=_("template"))
-    status = models.CharField(default='A', null=False,
-        choices=status_choices, verbose_name=_("status"))
+    status = models.CharField(default=STATUS_TYPE_ACTIVE,
+        null=False, choices=status_choices,
+        verbose_name=_("status"))
     class Meta:
         db_table = "cm_email_template"
     def __str__(self):
@@ -31,8 +34,9 @@ class SmsTemplate(models.Model):
         verbose_name=_("name"))
     template = models.TextField(null=False,
         verbose_name=_("template"))
-    status = models.CharField(default='A', null=False,
-        choices=status_choices, verbose_name=_("status"))
+    status = models.CharField(default=STATUS_TYPE_ACTIVE,
+        null=False, choices=status_choices,
+        verbose_name=_("status"))
     class Meta:
         db_table = "cm_sms_template"
     def __str__(self):
@@ -47,8 +51,9 @@ class EmailNotificationQueue(models.Model):
     email_template = models.ForeignKey(EmailTemplate)
     sent_at = models.DateTimeField(null=True,
         verbose_name=_("sent_at"))
-    status = models.CharField(default='A', null=False,
-        choices=status_choices, verbose_name=_("status"))
+    status = models.CharField(default=NOTIFICATION_ACTIVE,
+        null=False, choices=notification_choices,
+        verbose_name=_("status"))
     class Meta:
         db_table = "cm_email_notification_queue"
     def __str__(self):
@@ -63,8 +68,9 @@ class SmsNotificationQueue(models.Model):
     sms_template = models.ForeignKey(SmsTemplate)
     sent_at = models.DateTimeField(null=True,
         verbose_name=_("sent_at"))
-    status = models.CharField(default='A', null=False,
-        choices=status_choices, verbose_name=_("status"))
+    status = models.CharField(default=NOTIFICATION_ACTIVE,
+        null=False, choices=notification_choices,
+        verbose_name=_("status"))
     class Meta:
         db_table = "cm_sms_notification_queue"
     def __str__(self):
