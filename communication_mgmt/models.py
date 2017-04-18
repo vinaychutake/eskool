@@ -64,7 +64,7 @@ class SmsNotificationQueue(models.Model):
     database to send sms notification
     """
     data = models.TextField(max_length=300, null=False)
-    phone_num = models.CharField(null=False) #- validaters ?
+    phone_num = models.CharField(max_length=20,null=False)
     sms_template = models.ForeignKey(SmsTemplate)
     sent_at = models.DateTimeField(null=True,
         verbose_name=_("sent_at"))
