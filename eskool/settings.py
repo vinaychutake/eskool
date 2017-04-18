@@ -39,6 +39,7 @@ SHARED_APPS = (
 
     'portal',
     'common',
+    'user',
 )
 
 TENANT_APPS = (

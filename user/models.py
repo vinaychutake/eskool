@@ -4,9 +4,9 @@ import datetime
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import ugettext_lazy as _
-from common.choices import STATUS_CHOICES as status_choices
 from common.choices import GENDER_CHOICES as gender_choices
 from common.choices import CONTACT_CHOICES as contact_choices
+from tenant_mgmt.models import Address, Cast, ContactNumber
 
 USER_IMAGES_PATH = '/media'
 
@@ -19,10 +19,10 @@ class User(AbstractUser):
     birth_date = models.DateTimeField(null=True, blank=True)
     profile_pic = models.ImageField(upload_to=USER_IMAGES_PATH, null=True, blank=True)
     is_active = models.BooleanField(default=False)
-    gender = models.CharField(default='A', null=False,
+    gender = models.CharField(max_length=1, null=False,
         choices=gender_choices, verbose_name=_("gender"), blank=False)
     is_deleted = models.BooleanField(default=False)
-    #cast = models.ForeignKey(tm_cast, null=False, unique=True, blank=False)
+    cast = models.ForeignKey(Cast, null=False, unique=True, blank=False)
     class Meta:
         db_table = "am_user"
 
@@ -33,7 +33,7 @@ class UserAddressMap(models.Model):
     """
     """
     user = models.ForeignKey(User, null=False, blank=False)
-    #address = models.ForeignKey(tm_address, null=False, blank=False)
+    address = models.ForeignKey(Address, null=False, blank=False)
     class Meta:
         db_table = "am_user_address_map"
 
@@ -41,9 +41,9 @@ class UserAddressMap(models.Model):
 class UserContactMap(models.Model):
     """
     """
-    #contact_num = models.ForeignKey(tm_contact_number, null=False, blank=False)
-    type = models.CharField(null=False,
+    contact_num = models.ForeignKey(ContactNumber, null=False, blank=False)
+    type = models.CharField(null=False, max_length=1,
         choices=contact_choices, verbose_name=_("type"), blank=False)
 
     class Meta:
-        db_table = "am_user_address_map"
+        db_table = "am_user_contact_map"
