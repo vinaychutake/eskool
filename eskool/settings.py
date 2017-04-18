@@ -22,6 +22,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'htbjgesgo-^(_(5t+fthvc9_9r3g&!f2#y=q5$bu^9^*(8o#k$'
 
+AUTH_USER_MODEL = 'user.User'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -102,6 +104,7 @@ DATABASES = {
         "ENGINE": "tenant_schemas.postgresql_backend",
         "NAME": "eskool_db",
         "USER": "postgres",
+        #"PASSWORD": "vinay123",
         "PASSWORD": "vinay123",
         "HOST": "localhost",
         "PORT": "",
