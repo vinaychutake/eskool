@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf.urls import include, url
+
 from portal import views as portal_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', portal_views.LandingView.as_view(), name = 'landing_page'),
+    url(r'^$', include('portal.urls')),
 ]
