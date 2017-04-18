@@ -51,6 +51,7 @@ TENANT_APPS = (
 
     'communication_mgmt',
     'news_board',
+    'user'
 )
 
 INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
@@ -73,10 +74,6 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, "templates"),
-            # os.path.join(BASE_DIR, "portal", "templates"),
-            # os.path.join(BASE_DIR, "communication_mgmt", "templates"),
-            # os.path.join(BASE_DIR, "tenant_mgmt", "templates"),
-            # os.path.join(BASE_DIR, "news_board", "templates")
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -98,15 +95,11 @@ DATABASE_ROUTERS = (
 
 TENANT_MODEL = "tenant_mgmt.Institute"
 
-# Database
-# https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-
 DATABASES = {
     "default": {
         "ENGINE": "tenant_schemas.postgresql_backend",
         "NAME": "eskool_db",
         "USER": "postgres",
-        #"PASSWORD": "vinay123",
         "PASSWORD": "vinay123",
         "HOST": "localhost",
         "PORT": "",
