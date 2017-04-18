@@ -40,6 +40,7 @@ SHARED_APPS = (
     'django.contrib.messages',
     'django.contrib.admin',
     'portal',
+    'common',
 )
 
 TENANT_APPS = (
@@ -91,7 +92,7 @@ DATABASE_ROUTERS = (
     'tenant_schemas.routers.TenantSyncRouter',
 )
 
-TENANT_MODEL = "tenant_mgmt.Client"
+TENANT_MODEL = "tenant_mgmt.Institute"
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
