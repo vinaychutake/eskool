@@ -37,15 +37,16 @@ SHARED_APPS = (
 
     'django.contrib.contenttypes',
 
-    'django.contrib.auth',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.admin',
     'portal',
     'common',
 )
 
 TENANT_APPS = (
+
+    'django.contrib.auth',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.admin',
 
     'communication_mgmt',
     'news_board',
@@ -71,10 +72,10 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, "templates"),
-            os.path.join(BASE_DIR, "portal", "templates"),
-            os.path.join(BASE_DIR, "communication_mgmt", "templates"),
-            os.path.join(BASE_DIR, "tenant_mgmt", "templates"),
-            os.path.join(BASE_DIR, "news_board", "templates")
+            # os.path.join(BASE_DIR, "portal", "templates"),
+            # os.path.join(BASE_DIR, "communication_mgmt", "templates"),
+            # os.path.join(BASE_DIR, "tenant_mgmt", "templates"),
+            # os.path.join(BASE_DIR, "news_board", "templates")
         ],
         'APP_DIRS': True,
         'OPTIONS': {
