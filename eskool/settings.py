@@ -22,6 +22,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'htbjgesgo-^(_(5t+fthvc9_9r3g&!f2#y=q5$bu^9^*(8o#k$'
 
+AUTH_USER_MODEL = 'user.User'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -35,15 +37,16 @@ SHARED_APPS = (
 
     'django.contrib.contenttypes',
 
-    'django.contrib.auth',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.admin',
     'portal',
     'common',
 )
 
 TENANT_APPS = (
+
+    'django.contrib.auth',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.admin',
 
     'communication_mgmt',
     'news_board',
@@ -69,10 +72,10 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, "templates"),
-            os.path.join(BASE_DIR, "portal", "templates"),
-            os.path.join(BASE_DIR, "communication_mgmt", "templates"),
-            os.path.join(BASE_DIR, "tenant_mgmt", "templates"),
-            os.path.join(BASE_DIR, "news_board", "templates")
+            # os.path.join(BASE_DIR, "portal", "templates"),
+            # os.path.join(BASE_DIR, "communication_mgmt", "templates"),
+            # os.path.join(BASE_DIR, "tenant_mgmt", "templates"),
+            # os.path.join(BASE_DIR, "news_board", "templates")
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -102,6 +105,7 @@ DATABASES = {
         "ENGINE": "tenant_schemas.postgresql_backend",
         "NAME": "eskool_db",
         "USER": "postgres",
+        #"PASSWORD": "vinay123",
         "PASSWORD": "vinay123",
         "HOST": "localhost",
         "PORT": "",
