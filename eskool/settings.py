@@ -27,23 +27,31 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
+SHARED_APPS = (
+    'tenant_schemas',
+    'tenant_mgmt',
+
     'django.contrib.contenttypes',
+
+    'django.contrib.auth',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.admin',
     'portal',
+)
+
+TENANT_APPS = (
+
     'communication_mgmt',
-    'tenant_mgmt',
-    'news_board'
-]
+    'news_board',
+)
+
+INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
 
 MIDDLEWARE = [
+    'tenant_schemas.middleware.TenantMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -79,23 +87,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'eskool.wsgi.application'
 
+DATABASE_ROUTERS = (
+    'tenant_schemas.routers.TenantSyncRouter',
+)
+
+TENANT_MODEL = "tenant_mgmt.Client"
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
     "default": {
-        # Ends with "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        # DB name or path to database file if using sqlite3.
+        "ENGINE": "tenant_schemas.postgresql_backend",
         "NAME": "eskool_db",
-        # Not used with sqlite3.
         "USER": "postgres",
-        # Not used with sqlite3.
         "PASSWORD": "vinay123",
-        # Set to empty string for localhost. Not used with sqlite3.
         "HOST": "localhost",
-        # Set to empty string for default. Not used with sqlite3.
         "PORT": "",
     }
 }
