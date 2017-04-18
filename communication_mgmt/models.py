@@ -18,7 +18,7 @@ class EmailTemplate(models.Model):
     	verbose_name=_("name"))
     template = models.TextField(null=False,
         verbose_name=_("template"))
-    status = models.CharField(default=STATUS_TYPE_ACTIVE,
+    status = models.CharField(max_length=1, default=STATUS_TYPE_ACTIVE,
         null=False, choices=status_choices,
         verbose_name=_("status"))
     class Meta:
@@ -34,7 +34,7 @@ class SmsTemplate(models.Model):
         verbose_name=_("name"))
     template = models.TextField(null=False,
         verbose_name=_("template"))
-    status = models.CharField(default=STATUS_TYPE_ACTIVE,
+    status = models.CharField(max_length=1, default=STATUS_TYPE_ACTIVE,
         null=False, choices=status_choices,
         verbose_name=_("status"))
     class Meta:
@@ -51,7 +51,7 @@ class EmailNotificationQueue(models.Model):
     email_template = models.ForeignKey(EmailTemplate)
     sent_at = models.DateTimeField(null=True,
         verbose_name=_("sent_at"))
-    status = models.CharField(default=NOTIFICATION_ACTIVE,
+    status = models.CharField(max_length=1, default=NOTIFICATION_ACTIVE,
         null=False, choices=notification_choices,
         verbose_name=_("status"))
     class Meta:
@@ -68,7 +68,7 @@ class SmsNotificationQueue(models.Model):
     sms_template = models.ForeignKey(SmsTemplate)
     sent_at = models.DateTimeField(null=True,
         verbose_name=_("sent_at"))
-    status = models.CharField(default=NOTIFICATION_ACTIVE,
+    status = models.CharField(max_length=1, default=NOTIFICATION_ACTIVE,
         null=False, choices=notification_choices,
         verbose_name=_("status"))
     class Meta:
