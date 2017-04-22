@@ -16,12 +16,13 @@ Including another URLconf
 
 from django.contrib import admin
 from django.conf.urls import include, url
-from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    url(r'^login/$', auth_views.login, name='login'),
-    url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^admin/', admin.site.urls),
+
     url(r'^', include('portal.urls')),
     url(r'^home/', include('dashboard.urls')),
+    url(r'^auth/', include('auth_management.urls')),
+    url(r'^nb/', include('notice_board.urls')),
+    url(r'^cm/', include('communication_management.urls')),
 ]

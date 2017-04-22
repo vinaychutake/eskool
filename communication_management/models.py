@@ -6,51 +6,45 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
 
 from common.choices import NOTIFICATION_ACTIVE, NOTIFICATION_CHOICES as notification_choices
 from common.models import StatusMixin, SoftDeleteMixin
 
-class EmailTemplate(StatusMixin):
+class NotificationTemplate(StatusMixin):
     """
-    email template database definations having
+    template database definations having 
     name, template and status
     """
 
     name = models.CharField(max_length=48, unique=True, verbose_name=_("name"))
 
-    template = models.TextField(null=False, verbose_name=_("template"))
-
-    class Meta:
-        db_table = "cm_email_template"
-
-    def __str__(self):
-        return self.name
-
-class SmsTemplate(StatusMixin):
-    """
-    sms template database
-    """
-
-    name = models.CharField(max_length=48, unique=True, verbose_name=_("name"))
+    code = models.CharField(max_length=16, unique=True, verbose_name=_('code'))
 
     template = models.TextField(null=False, verbose_name=_("template"))
 
+    config = models.TextField(null=True)
+
+    template_type = models.CharField(max_length=1, null=False, default='A')
+
     class Meta:
-        db_table = "cm_sms_template"
+        db_table = "cm_notification_template"
 
     def __str__(self):
-        return self.name
+            return self.name
 
-class EmailNotification(SoftDeleteMixin):
+class Notification(SoftDeleteMixin):
     """
-    database to send email notification
+    database to send notification
     """
 
-    data = models.TextField(null=False)
+    text = models.TextField(null=False)
 
-    mail_to = models.EmailField(max_length=255, null=False)
+    receiver = models.ForeignKey(settings.AUTH_USER_MODEL, null=False, related_name='notifications')
 
-    email_template = models.ForeignKey(EmailTemplate, related_name='emails')
+    template = models.ForeignKey(NotificationTemplate, related_name='notifications')
+
+    is_sent = models.BooleanField(default=False)
 
     sent_at = models.DateTimeField(null=True, verbose_name=_("sent_at"))
 
@@ -58,29 +52,8 @@ class EmailNotification(SoftDeleteMixin):
                               choices=notification_choices, verbose_name=_("status"))
 
     class Meta:
-        db_table = "cm_email_notification"
+        db_table = "cm_notification"
 
     def __str__(self):
-        return self.mail_to
-
-class SmsNotification(SoftDeleteMixin):
-    """
-    database to send sms notification
-    """
-
-    data = models.TextField(max_length=300, null=False)
-
-    phone_number = models.CharField(max_length=20,null=False)
-
-    sms_template = models.ForeignKey(SmsTemplate, related_name='all_sms')
-
-    sent_at = models.DateTimeField(null=True, verbose_name=_("sent_at"))
-
-    status = models.CharField(max_length=1, default=NOTIFICATION_ACTIVE, null=False,
-                              choices=notification_choices, verbose_name=_("status"))
-
-    class Meta:
-        db_table = "cm_sms_notification"
-
-    def __str__(self):
-        return self.phone_number
+        return self.data
+    

@@ -98,8 +98,7 @@
       </li>
     </ol>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node BACKGROUND_COLOR="#94fea5" CREATED="1491988018840" FOLDED="true" HGAP="28" ID="ID_1730434729" MODIFIED="1492839290268" POSITION="right" TEXT="tm_state" VSHIFT="247">
 <node CREATED="1491988050311" ID="ID_1470197664" MODIFIED="1491988176603" TEXT="id: int, ai, pk">
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_1470197664" ENDARROW="Default" ENDINCLINATION="160;0;" ID="Arrow_ID_1544860028" SOURCE="ID_20592787" STARTARROW="None" STARTINCLINATION="160;0;"/>
@@ -209,8 +208,7 @@
       Table for client (coaching class/school).
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1475205425343" ID="ID_1864710768" MODIFIED="1475811353656" TEXT="id: int, ai, pk"/>
 <node CREATED="1475205541841" ID="ID_1101682600" MODIFIED="1475205566005" TEXT="name: varchar(80), not null, unique"/>
 <node CREATED="1475205669138" ID="ID_319416483" MODIFIED="1475205681904" TEXT="code: varchar(48), not null, unique"/>
@@ -271,11 +269,10 @@
       D: Deleted
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
-<node BACKGROUND_COLOR="#fef794" CREATED="1475206588678" FOLDED="true" ID="ID_1342525024" MODIFIED="1492844782106" POSITION="right" TEXT="am_user">
+<node BACKGROUND_COLOR="#fef794" CREATED="1475206588678" FOLDED="true" ID="ID_1342525024" MODIFIED="1492867149342" POSITION="right" TEXT="am_user">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -286,11 +283,12 @@
     </p>
   </body>
 </html></richcontent>
-<node CREATED="1475205425343" ID="ID_506772145" MODIFIED="1492505108600" TEXT="id: int, ai, pk">
+<node CREATED="1475205425343" ID="ID_506772145" MODIFIED="1492867146249" TEXT="id: int, ai, pk">
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_506772145" ENDARROW="Default" ENDINCLINATION="285;0;" ID="Arrow_ID_430902311" SOURCE="ID_1875423884" STARTARROW="None" STARTINCLINATION="285;0;"/>
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_506772145" ENDARROW="Default" ENDINCLINATION="285;0;" ID="Arrow_ID_1188638099" SOURCE="ID_1153090154" STARTARROW="None" STARTINCLINATION="285;0;"/>
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_506772145" ENDARROW="Default" ENDINCLINATION="651;0;" ID="Arrow_ID_1517972009" SOURCE="ID_5068829" STARTARROW="None" STARTINCLINATION="651;0;"/>
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_506772145" ENDARROW="Default" ENDINCLINATION="651;0;" ID="Arrow_ID_1501461064" SOURCE="ID_10372465" STARTARROW="None" STARTINCLINATION="651;0;"/>
+<linktarget COLOR="#b0b0b0" DESTINATION="ID_506772145" ENDARROW="Default" ENDINCLINATION="1001;0;" ID="Arrow_ID_1298091453" SOURCE="ID_703990203" STARTARROW="None" STARTINCLINATION="1001;0;"/>
 </node>
 <node CREATED="1475206610448" ID="ID_261830528" MODIFIED="1475725921781" TEXT="username: varchar(48), unique, not null">
 <richcontent TYPE="NOTE"><html>
@@ -356,8 +354,7 @@
       unique(user, contact_num)
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1491988635822" ID="ID_1153090154" MODIFIED="1491988814193" TEXT="user: int, fk(am_user: id), not null">
 <arrowlink DESTINATION="ID_506772145" ENDARROW="Default" ENDINCLINATION="285;0;" ID="Arrow_ID_1188638099" STARTARROW="None" STARTINCLINATION="285;0;"/>
 </node>
@@ -619,7 +616,7 @@
 <arrowlink DESTINATION="ID_1485683775" ENDARROW="Default" ENDINCLINATION="497;0;" ID="Arrow_ID_892412924" STARTARROW="None" STARTINCLINATION="497;0;"/>
 </node>
 </node>
-<node BACKGROUND_COLOR="#d6d2f9" CREATED="1491989193759" FOLDED="true" HGAP="33" ID="ID_424435231" MODIFIED="1492847491765" POSITION="right" TEXT="sm_staff_type" VSHIFT="20">
+<node BACKGROUND_COLOR="#d6d2f9" CREATED="1491989193759" FOLDED="true" HGAP="33" ID="ID_424435231" MODIFIED="1492866497422" POSITION="right" TEXT="sm_staff_type" VSHIFT="20">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -732,7 +729,7 @@
 <arrowlink DESTINATION="ID_722675955" ENDARROW="Default" ENDINCLINATION="187;0;" ID="Arrow_ID_1140722718" STARTARROW="None" STARTINCLINATION="187;0;"/>
 </node>
 </node>
-<node BACKGROUND_COLOR="#fe949d" CREATED="1475812552102" FOLDED="true" HGAP="56" ID="ID_1446602425" MODIFIED="1492848231847" POSITION="left" TEXT="acm_division" VSHIFT="10">
+<node BACKGROUND_COLOR="#fe949d" CREATED="1475812552102" FOLDED="true" HGAP="56" ID="ID_1446602425" MODIFIED="1492866503564" POSITION="left" TEXT="acm_division" VSHIFT="10">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -1086,7 +1083,7 @@
 <node CREATED="1492322634221" ID="ID_1100447480" MODIFIED="1492322655898" TEXT="total_fees: decimal, null"/>
 <node CREATED="1492320210788" ID="ID_577227543" MODIFIED="1492320223071" TEXT="roll_no:varchar(8), not null, unique"/>
 </node>
-<node BACKGROUND_COLOR="#a49a4a" CREATED="1492280259708" FOLDED="true" HGAP="29" ID="ID_962967072" MODIFIED="1492322352979" POSITION="right" TEXT="hm_homework_type" VSHIFT="24">
+<node BACKGROUND_COLOR="#a49a4a" CREATED="1492280259708" FOLDED="true" HGAP="29" ID="ID_962967072" MODIFIED="1492866497585" POSITION="right" TEXT="hm_homework_type" VSHIFT="24">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -1397,38 +1394,43 @@
 </html></richcontent>
 </node>
 </node>
-<node BACKGROUND_COLOR="#7cb7d2" CREATED="1492316673979" FOLDED="true" HGAP="105" ID="ID_1228507070" MODIFIED="1492853507219" POSITION="left" TEXT="cm_email_template" VSHIFT="18">
-<node CREATED="1492316699860" ID="ID_49636486" MODIFIED="1492316781816" TEXT="id: int, ai, pk">
-<linktarget COLOR="#b0b0b0" DESTINATION="ID_49636486" ENDARROW="Default" ENDINCLINATION="312;0;" ID="Arrow_ID_1960039335" SOURCE="ID_583557287" STARTARROW="None" STARTINCLINATION="312;0;"/>
-</node>
-<node CREATED="1492316708368" ID="ID_242933432" MODIFIED="1492316721649" TEXT="name: varchar(48), not null, unique"/>
-<node CREATED="1492316725559" ID="ID_1030349010" MODIFIED="1492316737263" TEXT="template: TextField, not null"/>
-<node CREATED="1475205618928" ID="ID_1699540226" MODIFIED="1492849344023" TEXT="status: char(1), not null, default A">
-<richcontent TYPE="NOTE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      A: Active
-    </p>
-    <p>
-      I: Inactive
-    </p>
-    <p>
-      D: Deleted
-    </p>
-  </body>
-</html></richcontent>
-</node>
-</node>
-<node BACKGROUND_COLOR="#7cb7d2" CREATED="1492316797562" FOLDED="true" HGAP="101" ID="ID_460310260" MODIFIED="1492853508381" POSITION="left" TEXT="cm_sms_template" VSHIFT="3">
-<node CREATED="1492316815675" ID="ID_614089470" MODIFIED="1492316971005" TEXT="id: int,ai, pk">
-<linktarget COLOR="#b0b0b0" DESTINATION="ID_614089470" ENDARROW="Default" ENDINCLINATION="308;0;" ID="Arrow_ID_1640020734" SOURCE="ID_736563888" STARTARROW="None" STARTINCLINATION="308;0;"/>
+<node BACKGROUND_COLOR="#7cb7d2" CREATED="1492316797562" FOLDED="true" HGAP="101" ID="ID_460310260" MODIFIED="1492872908316" POSITION="left" TEXT="cm_notification_template" VSHIFT="3">
+<node CREATED="1492316815675" ID="ID_614089470" MODIFIED="1492867077435" TEXT="id: int,ai, pk">
+<linktarget COLOR="#b0b0b0" DESTINATION="ID_614089470" ENDARROW="Default" ENDINCLINATION="232;0;" ID="Arrow_ID_47536072" SOURCE="ID_583557287" STARTARROW="None" STARTINCLINATION="232;0;"/>
 </node>
 <node CREATED="1492316708368" ID="ID_1424761274" MODIFIED="1492316721649" TEXT="name: varchar(48), not null, unique"/>
+<node CREATED="1492870469712" ID="ID_673980154" MODIFIED="1492870715585" TEXT="code: varchar(16), not null, unique"/>
 <node CREATED="1492316725559" ID="ID_219729540" MODIFIED="1492316737263" TEXT="template: TextField, not null"/>
-<node CREATED="1475205618928" ID="ID_1515164703" MODIFIED="1492849354401" TEXT="status: char(1), not null, default A">
+<node CREATED="1492870335889" ID="ID_1303974148" MODIFIED="1492870371380" TEXT="template_type: char(1), default &apos;A&apos;, not null">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      S: System
+    </p>
+    <p>
+      A: Application
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node CREATED="1492870383634" ID="ID_540003419" MODIFIED="1492870449920" TEXT="config: textfield, null">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      {'field': 'type', 'field1': 'type'}
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node CREATED="1475205618928" ID="ID_1515164703" MODIFIED="1492870359190" TEXT="status: char(1), not null, default A">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -1444,10 +1446,11 @@
       D: Deleted
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
 </node>
-<node BACKGROUND_COLOR="#7cb7d2" CREATED="1492316474525" FOLDED="true" HGAP="98" ID="ID_268364664" MODIFIED="1492850902269" POSITION="left" TEXT="cm_email_notification" VSHIFT="9">
+<node BACKGROUND_COLOR="#7cb7d2" CREATED="1492316474525" FOLDED="true" HGAP="98" ID="ID_268364664" MODIFIED="1492872909997" POSITION="left" TEXT="cm_notification" VSHIFT="9">
 <node CREATED="1492316491224" ID="ID_268160291" MODIFIED="1492316497983" TEXT="id: int, ai, pk"/>
 <node CREATED="1492316504906" ID="ID_1036413499" MODIFIED="1492316902253" TEXT="data: textfield, not null">
 <richcontent TYPE="NOTE"><html>
@@ -1461,12 +1464,15 @@
   </body>
 </html></richcontent>
 </node>
-<node CREATED="1492316612290" ID="ID_703990203" MODIFIED="1492849390499" TEXT="mail_to: varchar(255), not null"/>
-<node CREATED="1492316754691" ID="ID_583557287" MODIFIED="1492316781817" TEXT="template: int, fk(cm_email_template: id), not null">
-<arrowlink DESTINATION="ID_49636486" ENDARROW="Default" ENDINCLINATION="312;0;" ID="Arrow_ID_1960039335" STARTARROW="None" STARTINCLINATION="312;0;"/>
+<node CREATED="1492316612290" ID="ID_703990203" MODIFIED="1492867146250" TEXT="receiver: int, fk(am_user:id) not null">
+<arrowlink DESTINATION="ID_506772145" ENDARROW="Default" ENDINCLINATION="1001;0;" ID="Arrow_ID_1298091453" STARTARROW="None" STARTINCLINATION="1001;0;"/>
+</node>
+<node CREATED="1492316754691" ID="ID_583557287" MODIFIED="1492867077436" TEXT="template: int, fk(cm_email_template: id), not null">
+<arrowlink DESTINATION="ID_614089470" ENDARROW="Default" ENDINCLINATION="232;0;" ID="Arrow_ID_47536072" STARTARROW="None" STARTINCLINATION="232;0;"/>
 </node>
 <node CREATED="1492333946715" ID="ID_165144679" MODIFIED="1492333962251" TEXT="sent_at: datetime, null"/>
-<node CREATED="1475205618928" ID="ID_1179375360" MODIFIED="1492848910750" TEXT="status: char(1), not null, default A">
+<node CREATED="1492867323014" ID="ID_335834392" MODIFIED="1492867333018" TEXT="is_sent: boolean, default false"/>
+<node CREATED="1475205618928" ID="ID_1179375360" MODIFIED="1492867333050" TEXT="status: char(1), not null, default A">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -1488,48 +1494,11 @@
       I : Inactive
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
 </node>
-<node BACKGROUND_COLOR="#7cb7d2" CREATED="1492316834131" FOLDED="true" HGAP="98" ID="ID_1960879500" MODIFIED="1492850629466" POSITION="left" TEXT="cm_sms_notification" VSHIFT="8">
-<node CREATED="1492316815675" ID="ID_78060736" MODIFIED="1492316823365" TEXT="id: int,ai, pk"/>
-<node CREATED="1492316504906" ID="ID_305763232" MODIFIED="1492316920855" TEXT="data: textfield, not null">
-<richcontent TYPE="NOTE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      Json structure as required by the template
-    </p>
-  </body>
-</html></richcontent>
-</node>
-<node CREATED="1492316925462" ID="ID_273126203" MODIFIED="1492848874469" TEXT="phone_number: varchar(12), not null"/>
-<node CREATED="1492316950554" ID="ID_736563888" MODIFIED="1492316971005" TEXT="sms_template: int, fk(cm_sms_template: id), not null">
-<arrowlink DESTINATION="ID_614089470" ENDARROW="Default" ENDINCLINATION="308;0;" ID="Arrow_ID_1640020734" STARTARROW="None" STARTINCLINATION="308;0;"/>
-</node>
-<node CREATED="1492333946715" ID="ID_1811467256" MODIFIED="1492333956530" TEXT="sent_at: datetime, null"/>
-<node CREATED="1475205618928" ID="ID_153906139" MODIFIED="1492333956611" TEXT="status: char(1), not null, default A">
-<richcontent TYPE="NOTE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      A: Active
-    </p>
-    <p>
-      S: Sent
-    </p>
-    <p>
-      F: Failed
-    </p>
-  </body>
-</html></richcontent>
-</node>
-</node>
-<node BACKGROUND_COLOR="#fe94d2" CREATED="1492319354214" FOLDED="true" HGAP="91" ID="ID_1825417945" MODIFIED="1492850906014" POSITION="left" TEXT="nb_notice" VSHIFT="35">
+<node BACKGROUND_COLOR="#fe94d2" CREATED="1492319354214" FOLDED="true" HGAP="91" ID="ID_1825417945" MODIFIED="1492872902643" POSITION="left" TEXT="nb_notice" VSHIFT="35">
 <node CREATED="1492319420043" ID="ID_402793941" MODIFIED="1492321366891" TEXT="id: int, ai, pk">
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_402793941" ENDARROW="Default" ENDINCLINATION="270;0;" ID="Arrow_ID_540442362" SOURCE="ID_1624368390" STARTARROW="None" STARTINCLINATION="270;0;"/>
 </node>
@@ -1558,7 +1527,7 @@
 </html></richcontent>
 </node>
 </node>
-<node BACKGROUND_COLOR="#fe94d2" CREATED="1492321257021" FOLDED="true" HGAP="94" ID="ID_1001488428" MODIFIED="1492850165471" POSITION="left" TEXT="nb_notice_group_map">
+<node BACKGROUND_COLOR="#fe94d2" CREATED="1492321257021" FOLDED="true" HGAP="94" ID="ID_1001488428" MODIFIED="1492872904753" POSITION="left" TEXT="nb_notice_group_map">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -1568,8 +1537,7 @@
       unique(notice, user)
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1492321296921" ID="ID_1624368390" MODIFIED="1492321366892" TEXT="notice: int, fk(nb_notice: id), not null">
 <arrowlink DESTINATION="ID_402793941" ENDARROW="Default" ENDINCLINATION="270;0;" ID="Arrow_ID_540442362" STARTARROW="None" STARTINCLINATION="270;0;"/>
 </node>

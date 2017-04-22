@@ -34,9 +34,6 @@ class User(AbstractUser):
         db_table = "am_user"
 
     def __str__(self):
-        """
-        """
-
         return self.get_full_name()
 
     def get_full_name(self):

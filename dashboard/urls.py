@@ -5,4 +5,4 @@ from dashboard.views import IndexView
 
 urlpatterns = [
     url(r'^$', IndexView.as_view(), name = 'home'),
-]
+	]
