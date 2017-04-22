@@ -1,12 +1,13 @@
+"""
+Module contains all status fields required in project
+"""
 
 STATUS_TYPE_ACTIVE = 'A'
 STATUS_TYPE_INACTIVE = 'I'
-STATUS_TYPE_DELETED = 'D'
 
 STATUS_CHOICES = (
     (STATUS_TYPE_ACTIVE, 'Active'),
     (STATUS_TYPE_ACTIVE, 'Inactive'),
-    (STATUS_TYPE_DELETED, 'Deleted')
 )
 
 INSTITUTE_TYPE_SYSTEM = 'S'
@@ -33,7 +34,7 @@ CONTACT_TYPE_LANDLINE = 'L'
 CONTACT_CHOICES = (
     (CONTACT_TYPE_PERSONAL, 'Personal'),
     (CONTACT_TYPE_OFFICE, 'Office'),
-    (CONTACT_TYPE_LANDLINE,'Landline'),
+    (CONTACT_TYPE_LANDLINE, 'Landline'),
 )
 
 NOTIFICATION_ACTIVE = 'A'

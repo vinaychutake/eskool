@@ -15,14 +15,11 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'htbjgesgo-^(_(5t+fthvc9_9r3g&!f2#y=q5$bu^9^*(8o#k$'
-
-AUTH_USER_MODEL = 'user.User'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -33,25 +30,25 @@ ALLOWED_HOSTS = []
 
 SHARED_APPS = (
     'tenant_schemas',
-    'tenant_mgmt',
-
-    'django.contrib.contenttypes',
-
+    'tenant_management',
     'portal',
     'common',
-    'user',
+    'dashboard',
 )
 
 TENANT_APPS = (
 
+    'django.contrib.staticfiles',
     'django.contrib.auth',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.admin',
+    'django.contrib.contenttypes',
 
-    'communication_mgmt',
-    'news_board',
-    'user'
+
+    'auth_management',
+    'notice_board',
+    'communication_management',
 )
 
 INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
@@ -93,14 +90,14 @@ DATABASE_ROUTERS = (
     'tenant_schemas.routers.TenantSyncRouter',
 )
 
-TENANT_MODEL = "tenant_mgmt.Institute"
+DEFAULT_FILE_STORAGE = 'tenant_schemas.storage.TenantFileSystemStorage'
 
 DATABASES = {
     "default": {
         "ENGINE": "tenant_schemas.postgresql_backend",
-        "NAME": "eskool_db",
-        "USER": "postgres",
-        "PASSWORD": "vinay123",
+        "NAME": "eskool",
+        "USER": "eskool",
+        "PASSWORD": "eskool",
         "HOST": "localhost",
         "PORT": "",
     }
@@ -144,3 +141,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+AUTH_USER_MODEL = 'auth_management.User'
+
+TENANT_MODEL = "tenant_management.Institute"
+
+LOGIN_REDIRECT_URL = 'home'
