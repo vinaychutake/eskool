@@ -1,9 +1,11 @@
+import datetime
+
 """
 API module for notice board
 This apis can be accessed from any application
 """
 
-def create_notice(creator, group_names, text):
+def create_notice(name,creator, group_names, text):
     """
     Creates new notice
     Params:
@@ -11,8 +13,13 @@ def create_notice(creator, group_names, text):
         group_names: List of group names
         text: Actual notice text
     """
-
-    pass
+    notice = Notice(
+        name = name,
+        text = text,
+        creator = creator        
+        )
+    notice.save()
+    groups = Group.object.all()
 
 def update_notice(notice, group_names, text):
     """

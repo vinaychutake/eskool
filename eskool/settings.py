@@ -92,18 +92,6 @@ DATABASE_ROUTERS = (
 
 DEFAULT_FILE_STORAGE = 'tenant_schemas.storage.TenantFileSystemStorage'
 
-DATABASES = {
-    "default": {
-        "ENGINE": "tenant_schemas.postgresql_backend",
-        "NAME": "eskool",
-        "USER": "eskool",
-        "PASSWORD": "eskool",
-        "HOST": "localhost",
-        "PORT": "",
-    }
-}
-
-
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 
@@ -155,3 +143,4 @@ LOGIN_REDIRECT_URL = 'home'
 
 LOGIN_URL = '/auth/login/'
 
+from local_settings import *

@@ -1,0 +1,38 @@
+1. change local settings according your database settings
+
+2. python manage.py makemigrations
+
+3. python manage.py migrate_schemas --shared
+
+4. python manage.py migrate_schemas
+
+5. python manage.py shell
+
+6. from tenant_management.models import Institute
+
+7. Institute.objects.create(name='sckool', code='root', domain_url='eskool.com', schema_name='public', institute_type= 'S')
+
+8. Institute.objects.create(name='Your name', code='your_first_name', domain_url='your_first_name.eskool.com', schema_name='your_first_name', institute_type= 'A')
+
+9. python manage.py tenant_command createsuperuser
+
+10. vi /etc/hosts
+
+add these lines
+
+127.0.0.1 www.eskool.com
+
+127.0.0.1 www.your_first_name.eskool.com
+
+
+11. create you_first_name.html in portal/templates
+
+{% load staticfiles %}
+
+<h2>{{request.tenant}} Landing page</h2>
+
+<h3><a href={% url 'login' %}>Login</a></h3>
+
+12. python manage.py runserver
+
+13. access www.your_first_name.eskool.com:8000
