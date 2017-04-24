@@ -143,4 +143,6 @@ LOGIN_REDIRECT_URL = 'home'
 
 LOGIN_URL = '/auth/login/'
 
+MULTITENANT_RELATIVE_MEDIA_ROOT = "%s"
+
 from local_settings import *
