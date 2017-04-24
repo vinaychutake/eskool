@@ -152,3 +152,6 @@ AUTH_USER_MODEL = 'auth_management.User'
 TENANT_MODEL = "tenant_management.Institute"
 
 LOGIN_REDIRECT_URL = 'home'
+
+LOGIN_URL = '/auth/login/'
+

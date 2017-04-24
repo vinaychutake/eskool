@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+    {% block head %}
+    <head>        
+        <title>{{request.tenant}}</title>            
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        <link rel="icon" href="{% static 'common/img/favicon.ico' %}" type="image/x-icon" />
+        <link rel="stylesheet" type="text/css" id="theme" href="{% static 'common/css/theme-default.css' %}"/>
+    </head>
+    {% endblock %}
+    {% block body %}
+    <body>
+        <div class="page-container">
+            {% block menu %}
+        	   {% include 'menu.html' %}
+            {% endblock %}   
+            <!-- PAGE CONTENT -->
+            <div class="page-content">
+                {% block top_menu %}
+            	   {% include 'top_menu.html' %}
+                {% endblock %}
+
+                {% block breadcrumb %}
+            	   {% include 'bread_crumb.html' %}
+                {% endblock %}
+
+                {% block main_content %}
+                {% endblock %}
+            </div>
+        </div>
+
+        {% block bottomjs %}
+            <audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
+            <audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
+            
+    		<script type="text/javascript" src="{% static 'common/js/plugins/jquery/jquery.min.js' %}"></script>
+    		<script type="text/javascript" src="{% static 'common/js/plugins/jquery/jquery-ui.min.js' %}"></script>
+    		<script type="text/javascript" src="{% static 'common/js/plugins/bootstrap/bootstrap.min.js' %}"></script>
+
+    		<script type='text/javascript' src = "{% static 'common/js/plugins/icheck/icheck.min.js' %} "></script>
+    		<script type="text/javascript" src="{% static 'common/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js' %}"></script>
+    		<script type="text/javascript" src="{% static 'common/js/plugins/scrolltotop/scrolltopcontrol.js' %}"></script>
+    		        
+    		<script type="text/javascript" src="{% static 'common/js/plugins/morris/raphael-min.js' %}"></script>
+    		<script type="text/javascript" src="{% static 'common/js/plugins/morris/morris.min.js' %}"></script>
+    		<script type="text/javascript" src="{% static 'common/js/plugins/rickshaw/d3.v3.js' %}"></script>
+    		<script type="text/javascript" src="{% static 'common/js/plugins/rickshaw/rickshaw.min.js' %}"></script>
+    		<script type="text/javascript" src="{% static 'common/js/plugins/jvectormap/jquery-jvectormap1.2.2.min.js' %}"></script>
+    		<script type="text/javascript" scr="{% static 'common/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js' %}"></script>  
+    		<script type="text/javascript" src="{% static 'common/js/plugins/bootstrap/bootstrap-datepicker.js' %}"></script>  
+    		<script type="text/javascript" src="{% static 'common/js/plugins/owl/owl.carousel.min.js' %}"></script>   
+    		        
+    		<script type="text/javascript" src="{% static 'common/js/plugins/moment.min.js' %}"></script>
+    		<script type="text/javascript" src="{% static 'common/js/plugins/daterangepicker/daterangepicker.js' %}"></script>
+
+    		<script type="text/javascript" src="{% static 'common/js/settings.js' %}"></script>
+    		        
+    		<script type="text/javascript" src="{% static 'common/js/plugins.js' %}"></script>
+    		<script type="text/javascript" src="{% static 'common/js/actions.js' %}"></script>
+    		        
+    		<script type="text/javascript" src="{% static 'common/js/demo_dashboard.js' %}"></script>
+        {% endblock %}
+    </body>
+    {% endblock %}
+</html>
+
+
+
+
+
+

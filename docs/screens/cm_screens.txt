@@ -1,0 +1,14 @@
+Notification Template
+
+1. create notification template
+2. update notificaton template
+3. Delete notification template
+4. List notification templates (with pagination)
+
+Notification
+
+1. Create Notification
+2. Update Notification
+3. Delete Notification
+4. List My Notificiations (with pagination)
+5. List Notifications to edit (with filter functionality for user)

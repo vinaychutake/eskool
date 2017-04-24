@@ -1,6 +1,6 @@
 <map version="1.0.1">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
-<node CREATED="1491807872336" ID="ID_1441098760" MODIFIED="1492280113838" TEXT="Functionalities">
+<node CREATED="1491807872336" ID="ID_1441098760" MODIFIED="1492874394477" TEXT="Functionalities">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -30,7 +30,8 @@
       </li>
     </ol>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <node CREATED="1491813883629" HGAP="30" ID="ID_1960302967" MODIFIED="1492320052414" POSITION="left" STYLE="fork" TEXT="1. Tenant Management" VSHIFT="25">
 <font NAME="SansSerif" SIZE="12"/>
 <icon BUILTIN="flag-green"/>
@@ -90,5 +91,6 @@
 <node CREATED="1491906788192" ID="ID_609722419" MODIFIED="1492322235066" POSITION="left" TEXT="19. Instant messanger"/>
 <node CREATED="1491823363484" ID="ID_1107678351" MODIFIED="1492322238968" POSITION="left" TEXT="20. Online test management"/>
 <node CREATED="1491906525506" ID="ID_676094669" MODIFIED="1492322242272" POSITION="left" TEXT="21. Staff Salary management"/>
+<node CREATED="1492874401547" ID="ID_137837867" MODIFIED="1492874423437" POSITION="left" TEXT="22. notes/videos_management"/>
 </node>
 </map>
