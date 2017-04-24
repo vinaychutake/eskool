@@ -1,9 +1,29 @@
+{% extends 'auth_base.html' %}
+{% load staticfiles %}
 {% load i18n %}
 
-{% block content %}
-
-<p>{% trans "Thanks for spending some quality time with the Web site today." %}</p>
-
-<p><a href="{% url 'login' %}">{% trans 'Log in again' %}</a></p>
-
+{% block main_content%}
+        
+    <div class="login-box animated fadeInDown">
+        <div class="login-logo"></div>
+        <div class="login-body">
+            <div class="login-title">
+                <strong>{% trans 'Thanks for spending some quality time with us today.' %} </strong>
+                <p></p>
+                <div class="col-md-6">
+                    <a href="{% url 'login' %}">
+                    	<button class="btn btn-info btn-block">{% trans 'Log in again' %}</button>
+                    </a>
+                </div>
+            </div>
+        </div>  
+        <div class="login-footer">
+        	
+        </div>
+    </div>
+        
 {% endblock %}
+
+
+
+

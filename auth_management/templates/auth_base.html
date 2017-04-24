@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load i18n %}
+<html lang="en" class="body-full-height">
+    <head>        
+        <title>{{request.tenant.name}}</title>            
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+        <link rel="stylesheet" type="text/css" id="theme" href="{% static 'common/css/theme-default.css' %}"/>
+        <style type="text/css">
+            .login-container .login-box .login-logo{
+                background: url("{{request.tenant.logo.path}}") top center no-repeat;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="login-container">
+            {% block main_content%}
+            {% endblock %}
+        </div> 
+    </body>
+</html>
