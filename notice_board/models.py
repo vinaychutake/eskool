@@ -6,6 +6,7 @@ from django.contrib.auth.models import Group
 
 from common.models import StatusMixin
 from eskool.settings import AUTH_USER_MODEL
+from common.choices import STATUS_TYPE_ACTIVE, STATUS_CHOICES as status_choices
 
 class Notice(StatusMixin):
     """
@@ -22,6 +23,9 @@ class Notice(StatusMixin):
     is_published = models.BooleanField(default=False, blank=False)
 
     groups = models.ManyToManyField(Group)
+
+    status = models.CharField(max_length=1, default=STATUS_TYPE_ACTIVE, null=False,
+                              choices=status_choices, verbose_name=_("status"))
 
     class Meta:
         db_table = "nb_notice"
