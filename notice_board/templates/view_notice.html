@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+    {% load i18n %}
+    {% block main_content %}
+        <div class="content-frame">                                    
+
+            <div class="content-frame-top">                        
+                <div class="page-title">                    
+                    <h2><span class="fa fa-envelope"></span> {% trans 'Notice' %}</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+
+                        <div class="pull-right">
+                            <a href="{% url 'my_notices' %}"> 
+                                <button class="btn btn-success pull-right">
+                                    <span class="fa fa-mail-reply"></span>
+                                    {% trans 'Back' %}
+                                </button>
+                            </a>
+                            <button class="btn btn-default content-frame-left-toggle">
+                                <span class="fa fa-bars"></span>
+                            </button>
+
+                            <button class="btn btn-default">
+                                <span class="fa fa-print"></span> {% trans 'Print' %}
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <h3>{{notice.name}}
+                            <small class="pull-right text-muted">
+                                <span class="fa fa-clock-o"></span> {{notice.creted_on}}
+                            </small>
+                        </h3>
+                        {{notice.text| safe}}
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

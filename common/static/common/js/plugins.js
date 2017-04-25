@@ -168,9 +168,10 @@ $(function() {
         var uiDatatable = function(){
             if($(".datatable").length > 0){                
                 $(".datatable").dataTable();
-                $(".datatable").on('page.dt',function () {
-                    onresize(100);
-                });
+
+                //$(".datatable").on('page.dt',function () {
+                //    onresize(100);
+                //});
             }
             
             if($(".datatable_simple").length > 0){                

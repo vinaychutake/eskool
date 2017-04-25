@@ -2,6 +2,7 @@
 API module for notice board
 This apis can be accessed from any application
 """
+
 from common.utils import paginate_objects
 from notice_board.models import Notice
 
@@ -13,10 +14,11 @@ def create_notice(name, creator, group_names, text):
         group_names: List of group names
         text: Actual notice text
     """
+
     notice = Notice(name=name,
-                                   text=text,
-                                   creator=creator)
-    groups_list = Group.object.all(name__in=group_names)
+                    text=text,
+                    creator=creator)
+    groups_list = Group.object.filter(name__in=group_names)
     notice.groups.set(groups_list)
     notice.clean()
     notice.save()
@@ -29,6 +31,7 @@ def update_notice(notice_id, group_names, text):
         group_names: List of group names
         text: Actual notice text
     """
+
     notice = get_notice_obj(notice_id)
     groups_list = Group.object.filter(name__in=group_names)
     notice.groups.set(groups_list)
@@ -48,9 +51,10 @@ def get_user_notices(user, page_no=1, paginate=True):
     """
     notices = Notice.objects.filter(groups__id__in=user.groups.all().values_list('id', flat=True), 
                                     status='A')
+
     if paginate:
-        notices = paginate_objects(notices, 5, page_no)
-    return {'notices' : notices}
+        notices = paginate_objects(notices, 1, page_no)
+    return notices
 
 def get_notices(creator, return_all=False, page_no=1, paginate=True):
     """
@@ -62,9 +66,10 @@ def get_notices(creator, return_all=False, page_no=1, paginate=True):
         paginate: If False return all objects, else return objects on given page
     """
     if return_all:
-        notices = Notice.objects.filter(creator=creator, status='A')
+        notices = Notice.objects.filter(status='A')
     else:
-        notices = Notice.objects.all()
+        notices = Notice.objects.filter(creator=creator, status='A')
+
     if paginate:
         notices = paginate_objects(notices, 5, page_no)
     return notices

@@ -1,26 +1,22 @@
 1. change local settings according your database settings
 
-2. create and actiavte virtual environment
+2. python manage.py makemigrations
 
-3. Install all requirements from requirements.txt
+3. python manage.py migrate_schemas --shared
 
-4. python manage.py makemigrations
+4. python manage.py migrate_schemas
 
-5. python manage.py migrate_schemas --shared
+5. python manage.py shell
 
-6. python manage.py migrate_schemas
+6. from tenant_management.models import Institute
 
-7. python manage.py shell
+7. Institute.objects.create(name='sckool', code='root', domain_url='eskool.com', schema_name='public', institute_type= 'S')
 
-8. from tenant_management.models import Institute
+8. Institute.objects.create(name='Your name', code='your_first_name', domain_url='your_first_name.eskool.com', schema_name='your_first_name', institute_type= 'A')
 
-9. Institute.objects.create(name='sckool', code='root', domain_url='eskool.com', schema_name='public', institute_type= 'S')
+9. python manage.py tenant_command createsuperuser
 
-10. Institute.objects.create(name='Your name', code='your_first_name', domain_url='your_first_name.eskool.com', schema_name='your_first_name', institute_type= 'A')
-
-11. python manage.py tenant_command createsuperuser
-
-12. vi /etc/hosts
+10. vi /etc/hosts
 
 add these lines
 
@@ -29,7 +25,7 @@ add these lines
 127.0.0.1 www.your_first_name.eskool.com
 
 
-13. create you_first_name.html in portal/templates
+11. create you_first_name.html in portal/templates
 
 {% load staticfiles %}
 
@@ -37,6 +33,6 @@ add these lines
 
 <h3><a href={% url 'login' %}>Login</a></h3>
 
-14. python manage.py runserver
+12. python manage.py runserver
 
-15. access www.your_first_name.eskool.com:8000
+13. access www.your_first_name.eskool.com:8000

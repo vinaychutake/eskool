@@ -24,9 +24,9 @@ class User(AbstractUser):
 
     is_deleted = models.BooleanField(default=False)
 
-    addresses = models.ManyToManyField(Address)
+    addresses = models.ManyToManyField(Address, blank=True)
 
-    contace_numbers = models.ManyToManyField(ContactNumber)
+    contace_numbers = models.ManyToManyField(ContactNumber, blank=True)
 
     class Meta:
         db_table = "am_user"
