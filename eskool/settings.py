@@ -48,6 +48,8 @@ TENANT_APPS = (
     'auth_management',
     'notice_board',
     'communication_management',
+    'staff_management',
+    'academics_management'
 )
 
 INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]

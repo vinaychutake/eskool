@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block main_content %}
+<div class="page-content-wrap">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="widget widget-default widget-item-icon">
+                <div class="widget-item-left">
+                    <span class="fa fa-user"></span>
+                </div>        
+                <div class="widget-data">
+                    <div class="widget-int num-count">48</div>
+                    <div class="widget-title">{% trans 'Teaching Staff' %}</div>
+                </div>
+            </div>            
+        </div>
+
+        <div class="col-md-3">
+            <div class="widget widget-default widget-item-icon">
+                <div class="widget-item-left">
+                    <span class="fa fa-user"></span>
+                </div>        
+                <div class="widget-data">
+                    <div class="widget-int num-count">48</div>
+                    <div class="widget-title">{% trans 'Non Teaching Staff' %}</div>
+                </div>
+            </div>            
+        </div>
+
+    </div>
+</div>
+
+<div class="panel panel-default tabs">                            
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#teaching" role="tab" data-toggle="tab">
+                {% trans 'Teachers' %}
+            </a>
+        </li>
+        <li>
+            <a href="#non_teaching" role="tab" data-toggle="tab">
+                {% trans 'Non Teaching Staff' %}
+            </a>
+        </li>
+    </ul>
+
+    <div class="panel-body tab-content">
+        <div class="tab-pane active" id="teaching">
+            {% include 'teaching.html' %}
+        </div>
+        <div class="tab-pane" id="non_teaching">
+            {% include 'non_teaching.html' %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block bottomjs %}
+  {{block.super}}
+  <script>
+    $('#teaching_table').DataTable( {
+        "processing": true,
+        "serverSide": true,
+        "searching": false,
+        "ordering": false,
+        "stateSave": true,
+        "ajax": "{% url 'teachers_list' %}"
+    } );
+    $('#non_teaching_table').DataTable( {
+        "processing": true,
+        "serverSide": true,
+        "searching": false,
+        "ordering": false,
+        "stateSave": true,
+        "ajax": "{% url 'non_teaching_staff_list' %}"
+    } );
+
+   </script>
+{% endblock %}
