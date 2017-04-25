@@ -5,6 +5,7 @@ This apis can be accessed from any application
 
 from common.utils import paginate_objects
 from notice_board.models import Notice
+from django.contrib.auth.models import Group
 
 def create_notice(name, creator, group_names, text):
     """
@@ -18,12 +19,12 @@ def create_notice(name, creator, group_names, text):
     notice = Notice(name=name,
                     text=text,
                     creator=creator)
-    groups_list = Group.object.filter(name__in=group_names)
+    groups_list = Group.objects.filter(name__in=group_names)
     notice.groups.set(groups_list)
     notice.clean()
     notice.save()
 
-def update_notice(notice_id, group_names, text):
+def update_notice(notice_id,name,group_names, text):
     """
     Creates new notice
     Params:
@@ -33,8 +34,9 @@ def update_notice(notice_id, group_names, text):
     """
 
     notice = get_notice_obj(notice_id)
-    groups_list = Group.object.filter(name__in=group_names)
+    groups_list = Group.objects.filter(name__in=group_names)
     notice.groups.set(groups_list)
+    notice.name = name
     notice.text = text
     notice.clean()
     notice.save()

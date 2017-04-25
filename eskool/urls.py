@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^auth/', include('auth_management.urls')),
     url(r'^nb/', include('notice_board.urls')),
     url(r'^cm/', include('communication_management.urls')),
+    url(r'^sm/', include('staff_management.urls')),
 ]
 
 if settings.DEBUG:

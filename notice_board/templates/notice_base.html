@@ -10,7 +10,7 @@
 
 {% block main_content %}
 
-<div class="page-title">                    
+<div class="page-title">
     <h2><span class="fa fa-envelope"></span>
         {% trans 'NoticeBoard' %}
     </h2>
@@ -61,6 +61,8 @@
         "stateSave": true,
         "ajax": "{% url 'list_notices' %}"
     } );
+<<<<<<< HEAD
+=======
 
     $("#btnPrint").live("click", function () {
         var divContents = $("#notice-content").html();
@@ -74,5 +76,14 @@
         printWindow.close(); 
     });
 
+    function delete_notice(notice_id) {
+        alert(notice_id);
+        $("#message-box-danger").show();
+    }
+
+    
+ 
+
+>>>>>>> 853ea0fff9073069a3124334c216967dbd8c302b
    </script>
 {% endblock %}

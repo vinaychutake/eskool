@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block main_content %}
+<div class="row">
+    <div class="col-md-12">
+        <form enctype="multipart/form-data" class="form-horizontal" method="post">
+            {% csrf_token %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        {% trans 'Add Teacher' %}
+                    </h3>
+                    <ul class="panel-controls">
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            {% for field in form %}
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">
+                                    {{field.label}}
+                                </label>
+                                <div class="col-md-9">                     
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <span class="fa fa-pencil"></span>
+                                        </span>
+                                        {{field}}
+                                    </div>                                            
+                                    <span class="help-block">
+                                        {{field.help_text}}
+                                    </span>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="panel-footer">
+        <button class="btn btn-default">Clear Form</button>                                    
+        <button class="btn btn-primary pull-right">Submit</button>
+    </div>
+    </div>
+</form>
+        
+    </div>
+</div>                    
+{% endblock %}
