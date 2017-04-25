@@ -2,8 +2,10 @@
 API module for communication management
 This apis can be accessed from any application
 """
+
 from models import NotificationTemplate, Notification
 from common.utils import paginate_objects
+
 def create_notification_template(name, code, template, config):
     """
     creates new template
@@ -12,24 +14,19 @@ def create_notification_template(name, code, template, config):
                                                  code=code,
                                                  template=template,
                                                  config=config)
-    try:
-        obj_notification_temp.clean()
-        obj_notification_temp.save()
-    except Exceptions as e:
-        print e , "error while creating obj"
+    obj_notification_temp.clean()
+    obj_notification_temp.save()
 
 def update_notification_template(template_obj, name, code, template, config):
     """
     Updates given notification template with given data
     """
-    template_obj.update(name=name, 
-                        code=code,
-                        template=template,
-                        config=config)
-    try:
-        template_obj.clean()
-    except Exceptions as e:
-        print "error while updating notification_template"
+    template_obj.name=name, 
+    template_obj.code=code,
+    template_obj.template=template,
+    template_obj.config=config
+    template_obj.clean()
+    template_obj.save()
 
 def get_notification_templates():
     """
@@ -43,21 +40,20 @@ def delete_notification_template(template_obj):
     Deletes given notification template
     """
     template_obj.delete()
-    pass
+
 
 def get_notification_template_obj(template_id):
     """
     Returns notification template object with given id
     """
-    obj = NotificationTemplate.objects.get(id=template_id)
-    return obj
+    return NotificationTemplate.objects.get(id=template_id)
 
 def get_notification_obj(notification_id):
     """
     Returns notification object with given id
     """
-    obj = Notification.objects.get(id=notification_id)
-    return obj
+
+    return Notification.objects.get(id=notification_id)
 
 def create_notifition(template, receivers, text_data):
     """
@@ -67,12 +63,14 @@ def create_notifition(template, receivers, text_data):
         receivers: List of receivers/ user objects
         data: Actual data to send in json format
     """
+
+    notifications = []
     for receiver in receivers:
-        Notification.objects.bulk_create([
-                Notification(template=template,
-                             eceiver=receiver,
-                             text=text_data)]
-    pass
+        notifications.append(Notification(template=template,
+                                          receiver=receiver,
+                                          text=text_data))
+
+    Notification.objects.bulk_create(notifications)
 
 def update_notifition(notification_obj, text_data):
     """
@@ -82,19 +80,17 @@ def update_notifition(notification_obj, text_data):
         receivers: List of receivers/ user objects
         data: Actual data to send in json format
     """
-    notification_obj.update(text=text_data)
-    try:
-        notification_obj.clean()
-    except Exceptions as e:
-        print "error while modifying notification"
-    pass
+
+    notification_obj.text=text_data
+    notification_obj.clean()
+    notification_obj.save()
 
 def delete_notification(notification):
     """
     Deletes given notification
     """
     notification.delete()
-    pass
+
 
 def send_notification(institute, notification):
     """
@@ -120,20 +116,9 @@ def get_user_notifications(user, page_no=1, paginate=True):
     Returns:
         Notifications in json format
     """
+
     notifications = Notification.objects.filter(receiver=user)
     if paginate:
         notifications = paginate_objects(objs, 5, page_no)
-    return {'notifications':notifications}
-    # Use paginate_objects method from common.utils to get the list of objects
+    return notifications
 
-def list_notifications(creator, return_all=False, page_no=1, paginate=True):
-    """
-    Returns notifications to edit
-    Params:
-        creator: User object
-        return_all: weather to apply creator filter or not
-        page_no: page_no
-        paginate: If False return all objects, else return objects on given page
-    """
-
-    pass
