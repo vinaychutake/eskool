@@ -12,6 +12,7 @@ class Notice(StatusMixin):
     """
     Class representing an notice
     """
+
     name = models.CharField(null=False,max_length=48)
 
     text = models.TextField(null=False, verbose_name=_("text"), blank=False)
@@ -27,5 +28,9 @@ class Notice(StatusMixin):
     status = models.CharField(max_length=1, default=STATUS_TYPE_ACTIVE, null=False,
                               choices=status_choices, verbose_name=_("status"))
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         db_table = "nb_notice"
+        ordering = ['-creted_on']

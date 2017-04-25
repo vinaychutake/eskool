@@ -7,6 +7,8 @@ urlpatterns = [
 
     url(r'create/$', notice_views.CreateNotice.as_view(), name='create_notice'),
 
+	url(r'view/(?P<notice_id>\d)/$', notice_views.ViewNotice.as_view(), name='view_notice'),
+
     url(r'(?P<notice_id>\d)/$', notice_views.UpdateNotice.as_view(), name='update_notice'),
 
     url(r'delete/(?P<notice_id>\d)/$', notice_views.DeleteNotice.as_view(), name='delete_notice'),

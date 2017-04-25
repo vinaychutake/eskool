@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>         
+        <li class="active">{% trans 'NoticeBoard' %}</li>
+    </ul>
+{% endblock %}
+
+
+{% block main_content %}
+
+<div class="page-title">                    
+    <h2><span class="fa fa-envelope"></span>
+        {% trans 'NoticeBoard' %}
+    </h2>
+</div>
+
+<div  class="page-content-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{% trans 'Notices' %}</h3>
+                </div>
+                <div class="panel-body">
+                    <table id="customers2" class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>{% trans 'Title' %}</th>
+                                <th>{% trans 'Desc'%}</th>
+                                <th>{% trans 'Date' %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for notice in notices %}
+                                <tr>
+                                    <td>
+                                        {{forloop.counter}}
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'view_notice' notice.id %}">    {{notice.name}}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'view_notice' notice.id %}"> {{notice.text|safe| truncatechars:50}}
+                                        <a>    
+                                    </td>
+                                    <td>{{notice.creted_on}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>                                    
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

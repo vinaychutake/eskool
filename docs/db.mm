@@ -519,8 +519,7 @@
       e.g. 5th, 6th, 7th, 8th
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <icon BUILTIN="go"/>
 <node CREATED="1475205425343" ID="ID_1757961434" MODIFIED="1475836803137" TEXT="id: int, ai, pk">
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_1757961434" ENDARROW="Default" ENDINCLINATION="401;0;" ID="Arrow_ID_1877609495" SOURCE="ID_796589400" STARTARROW="None" STARTINCLINATION="401;0;"/>
@@ -570,8 +569,7 @@
       e.g. - 8th (2015-16), 9th (2015-16), 10th (2015-16),8th (2014-15), 9th (2014-15), 10th (2014-15)
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <icon BUILTIN="go"/>
 <node CREATED="1475205425343" ID="ID_1587492765" MODIFIED="1491822179515" TEXT="id: int, ai, pk">
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_1587492765" ENDARROW="Default" ENDINCLINATION="286;0;" ID="Arrow_ID_24281923" SOURCE="ID_392910524" STARTARROW="None" STARTINCLINATION="286;0;"/>
@@ -744,8 +742,7 @@
       e.g. 9th(2015-16)-A, 9th(2015-16)-B, 9th(2015-16)-C
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <icon BUILTIN="go"/>
 <node CREATED="1475205425343" ID="ID_1904693336" MODIFIED="1492334601384" TEXT="id: int, ai, pk">
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_1904693336" ENDARROW="Default" ENDINCLINATION="222;0;" ID="Arrow_ID_1884456744" SOURCE="ID_1734435361" STARTARROW="None" STARTINCLINATION="222;0;"/>
@@ -1369,8 +1366,9 @@
 </html></richcontent>
 </node>
 </node>
-<node BACKGROUND_COLOR="#f67c0a" CREATED="1492281597442" FOLDED="true" HGAP="40" ID="ID_860963767" MODIFIED="1492316346354" POSITION="right" STYLE="fork" TEXT="atm_staff_leave_application" VSHIFT="-28">
+<node BACKGROUND_COLOR="#f67c0a" CREATED="1492281597442" FOLDED="true" HGAP="40" ID="ID_860963767" MODIFIED="1493045483386" POSITION="right" STYLE="fork" TEXT="atm_staff_leave_application" VSHIFT="-28">
 <icon BUILTIN="go"/>
+<icon BUILTIN="help"/>
 <node CREATED="1475915510894" ID="ID_275320941" MODIFIED="1492281851755" TEXT="id: int, ai, pk"/>
 <node CREATED="1491821331155" ID="ID_369016758" MODIFIED="1492281634582" TEXT="from_date: datetime. not null"/>
 <node CREATED="1491821331155" ID="ID_91104633" MODIFIED="1492281646995" TEXT="to_date: datetime. not null"/>
@@ -1417,8 +1415,7 @@
       A: Application
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1492870383634" ID="ID_540003419" MODIFIED="1492870449920" TEXT="config: textfield, null">
 <richcontent TYPE="NOTE"><html>
@@ -1430,8 +1427,7 @@
       {'field': 'type', 'field1': 'type'}
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1475205618928" ID="ID_1515164703" MODIFIED="1492870359190" TEXT="status: char(1), not null, default A">
 <richcontent TYPE="NOTE"><html>
@@ -1449,8 +1445,7 @@
       D: Deleted
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node BACKGROUND_COLOR="#7cb7d2" CREATED="1492316474525" FOLDED="true" HGAP="98" ID="ID_268364664" MODIFIED="1492874627829" POSITION="left" TEXT="cm_notification" VSHIFT="9">
@@ -1497,8 +1492,7 @@
       I : Inactive
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node BACKGROUND_COLOR="#fe94d2" CREATED="1492319354214" FOLDED="true" HGAP="91" ID="ID_1825417945" MODIFIED="1492874627830" POSITION="left" TEXT="nb_notice" VSHIFT="35">

@@ -27,6 +27,7 @@
 .clearfix:after {
   clear: both;
 }
+
 .background-colorful {
   background: linear-gradient(left, #E04B4A 0%, #1caf9a 50%, #95b75d 100%);
   background: -o-linear-gradient(left, #E04B4A 0%, #1caf9a 50%, #95b75d 100%);

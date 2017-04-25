@@ -45,7 +45,6 @@ TENANT_APPS = (
     'django.contrib.admin',
     'django.contrib.contenttypes',
 
-
     'auth_management',
     'notice_board',
     'communication_management',
