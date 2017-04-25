@@ -27,22 +27,26 @@ class UpdateNotice(View):
     def get(self, request, notice_id):
         """
         """
-
-        pass
+        try:
+            notice = notice_api.get_notice_obj(notice_id)
+            return render(request, 'update_notice.html', {'notice': notice})
+        except ObjectDoesNotExist:
+            raise Http404
 
     def post(self, request, notice_id):
         """
         """
-        text = request.GET.get('text')
-        group_names = request.GET.get('name')
-        notice_api.update_notice(notice_id, group_names, text)
-        pass
+        text = request.POST.get('text')
+        name = request.POST.get('name')
+        group_names = request.POST.get('group_names')
+        notice_api.update_notice(notice_id, name, group_names, text)
+        return render(request, "notice_base.html")
 
 class DeleteNotice(View):
     """
     """
 
-    def post(self, request, notice_id):
+    def get(self, request, notice_id):
         """
         """
         notice_api.delete_notice(notice_id)
@@ -127,7 +131,10 @@ class ListNotices(View):
                                                     kwargs={'notice_id': notice.id}),
                                             notice.name),
                       "%s ..." %(notice.text[:30]),
-                      naturaltime(notice.creted_on)]
+                      naturaltime(notice.creted_on),
+                      "<a href=%s><span class='fa fa-pencil'></span></a>"%(reverse('update_notice',
+                                                    kwargs={'notice_id': notice.id}))+"</a>"
+                      +"&nbsp;&nbsp;&nbsp;&nbsp;""<a href='javascript:delete_notice(%s);'><span class='fa fa-trash-o'></span></a>"%(notice.id)]
             data.append(notice)
 
         response = {'recordsTotal': notices.get('count'),
