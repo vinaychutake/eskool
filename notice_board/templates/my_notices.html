@@ -3,12 +3,8 @@
 {% load staticfiles %}
 
 {% block breadcrumb %}
-    <ul class="breadcrumb">
-        <li><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>         
-        <li class="active">{% trans 'NoticeBoard' %}</li>
-    </ul>
+    {% include "bread_crumb.html" with first_level="Home" first_level_link="#" first_level_class="" second_level="NoticeBoard" second_level_link="#" second_level_class="active" %}
 {% endblock %}
-
 
 {% block main_content %}
 

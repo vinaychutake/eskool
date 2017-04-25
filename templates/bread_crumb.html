@@ -1,6 +1,8 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
-    <li><a href="#">Home</a></li>                    
-    <li class="active">Dashboard</li>
+    <li class="{{first_level_class}}"><a href="{{ first_level_link }}">{{first_level}}</a></li>
+    {% if second_level %}
+    <li class="{{second_level_class}}"><a href="{{ second_level_link }}">{{second_level}}</a></li>
+    {% endif %}
 </ul>
-<!-- END BREADCRUMB -->                       
+<!-- END BREADCRUMB -->
