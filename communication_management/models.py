@@ -56,5 +56,5 @@ class Notification(SoftDeleteMixin):
         db_table = "cm_notification"
 
     def __str__(self):
-        return self.data
+        return self.text
     
