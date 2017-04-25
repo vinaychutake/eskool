@@ -8,13 +8,12 @@
         <div class="login-logo"></div>
         <div class="login-body">
             <div class="login-title">
-                <strong>{% trans 'Thanks for spending some quality time with us today.' %} </strong>
-                <p></p>
-                <div class="col-md-6">
-                    <a href="{% url 'login' %}">
-                    	<button class="btn btn-info btn-block">{% trans 'Log in again' %}</button>
-                    </a>
-                </div>
+                {% trans 'Thanks for spending some quality time with us today.' %}
+            </div>
+            <div class="col-md-6">
+                <a href="{% url 'login' %}">
+                    <button class="btn btn-info btn-block">{% trans 'Log in again' %}</button>
+                </a>
             </div>
         </div>  
         <div class="login-footer">

@@ -25,7 +25,6 @@ class Notice(StatusMixin):
 
     groups = models.ManyToManyField(Group)
 
-
     def __str__(self):
         return self.name
 

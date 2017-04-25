@@ -26,7 +26,7 @@ class User(AbstractUser):
 
     addresses = models.ManyToManyField(Address, blank=True)
 
-    contace_numbers = models.ManyToManyField(ContactNumber, blank=True)
+    contact_numbers = models.ManyToManyField(ContactNumber, blank=True)
 
     class Meta:
         db_table = "am_user"
