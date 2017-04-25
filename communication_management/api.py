@@ -119,7 +119,14 @@ def get_user_notifications(user, page_no=1, paginate=True):
 
     notifications = Notification.objects.filter(receiver=user)
     if paginate:
-        notifications = paginate_objects(notifications, 5, page_no)
-    print notifications
+        notifications = paginate_notifications(paginate, notifications, 5, page_no)
     return notifications
+
+def paginate_notifications(paginate, notifications, records_per_page, page_no):
+    """
+    """
+    count = len(notifications)
+    if paginate:
+        notifications = paginate_objects(notifications, records_per_page, page_no)
+    return {'notifications': notifications, 'count': count, 'returned_count': len(notifications)}
 
