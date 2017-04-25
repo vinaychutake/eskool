@@ -85,11 +85,11 @@ def update_notifition(notification_obj, text_data):
     notification_obj.clean()
     notification_obj.save()
 
-def delete_notification(notification):
+def delete_notification(notification_obj):
     """
     Deletes given notification
     """
-    notification.delete()
+    notification_obj.delete()
 
 
 def send_notification(institute, notification):
@@ -119,6 +119,7 @@ def get_user_notifications(user, page_no=1, paginate=True):
 
     notifications = Notification.objects.filter(receiver=user)
     if paginate:
-        notifications = paginate_objects(objs, 5, page_no)
+        notifications = paginate_objects(notifications, 5, page_no)
+    print notifications
     return notifications
 

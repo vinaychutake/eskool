@@ -18,8 +18,6 @@ class CreateNotificationTemplate(View):
                                      code,
                                      template,
                                      config)
-        pass
-
 
 class UpdateNotificationTemplate(View):
     """
@@ -36,7 +34,6 @@ class UpdateNotificationTemplate(View):
                                      code,
                                      template,
                                      config)
-        pass
 
 class DeleteNotificationTemplate(View):
     """
@@ -47,7 +44,6 @@ class DeleteNotificationTemplate(View):
         """
         template_obj = NotificationTemplate(id=notification_template_id)
         delete_notification_template(template_obj)
-        pass
 
 class GetNotificationTemplates(View):
     """
@@ -57,7 +53,6 @@ class GetNotificationTemplates(View):
         """
         """
         get_notification_templates()
-        pass
 
 class CreateNotification(View):
     """
@@ -70,7 +65,6 @@ class CreateNotification(View):
         receivers = request.POST.get("receivers", '')
         text_data = request.POST.get("text_data", '')
         create_notifition(template, receivers, text_data)
-        pass
 
 class UpdateNotification(View):
     """
@@ -79,8 +73,9 @@ class UpdateNotification(View):
     def post(self, request, notification_id):
         """
         """
-        
-        pass
+        notification_obj = Notification(id=notification_id)
+        text_data = request.POST.get("data",'')
+        update_notifition(notification_obj, text_data)
 
 class DeleteNotification(View):
     """
@@ -89,7 +84,8 @@ class DeleteNotification(View):
     def post(self, request, notification_id):
         """
         """
-        pass
+        notification_obj = Notification(id=notification_id)
+        delete_notification(notification_obj)
 
 class GetMyNotifications(View):
     """
@@ -98,7 +94,9 @@ class GetMyNotifications(View):
     def get(self, request):
         """
         """
-        pass
+        user = request.user
+        notifications = get_user_notifications(user)
+        return render(request, 'tets.html', {'user_notification':notifications})
 
 class ListNotifications(View):
     """

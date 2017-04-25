@@ -39,7 +39,7 @@ def update_notice(notice_id, group_names, text):
     notice.clean()
     notice.save()
 
-def get_user_notices(user, page_no=1, paginate=True):
+def get_user_notices(user, page_no=1, paginate=True, records_per_page=10):
     """
     Returns notices for given user
     Params:
@@ -52,11 +52,9 @@ def get_user_notices(user, page_no=1, paginate=True):
     notices = Notice.objects.filter(groups__id__in=user.groups.all().values_list('id', flat=True), 
                                     status='A')
 
-    if paginate:
-        notices = paginate_objects(notices, 1, page_no)
-    return notices
+    return paginate_notices(paginate, notices, records_per_page, page_no)
 
-def get_notices(creator, return_all=False, page_no=1, paginate=True):
+def get_notices(creator, return_all=False, page_no=1, paginate=True, records_per_page=10):
     """
     Returns notices to edit
     Params:
@@ -70,9 +68,15 @@ def get_notices(creator, return_all=False, page_no=1, paginate=True):
     else:
         notices = Notice.objects.filter(creator=creator, status='A')
 
+    return paginate_notices(paginate, notices, records_per_page, page_no)
+
+def paginate_notices(paginate, notices, records_per_page, page_no):
+    """
+    """
+    count = len(notices)
     if paginate:
-        notices = paginate_objects(notices, 5, page_no)
-    return notices
+        notices = paginate_objects(notices, records_per_page, page_no) 
+    return {'notices': notices, 'count': count, 'returned_count': len(notices)}
 
 def publish_notice(notice_id):
     """

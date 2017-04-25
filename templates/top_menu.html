@@ -56,7 +56,7 @@
 
     <li class="xn-icon-button pull-right">
         <a href="#"><span class="fa fa-bell-o"></span></a>
-        <div class="informer informer-warning">3</div>
+        <div class="informer informer-warning">{{user_notification|length}}</div>
         <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
             <div class="panel-heading">
                 <h3 class="panel-title"><span class="fa fa-bell-o"></span> {% trans 'Notifications' %}</h3>                                
@@ -65,28 +65,20 @@
                 </div>
             </div>
 
-            <div class="panel-body list-group scroll" style="height: 200px;">                                
-
+            <div class="panel-body list-group scroll" style="height: 200px;">
+                {% for notification in user_notification %}
                 <a class="list-group-item" href="#">
-                    <strong>Phasellus augue arcu, elementum</strong>
+                    <strong>{{notification.text}}</strong>
                     <div class="progress progress-small progress-striped active">
                         <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">50%</div>
                     </div>
+                {% endfor %}
                     <small class="text-muted">John Doe, 25 Sep 2014 / 50%</small>
                 </a>
-
-                <a class="list-group-item" href="#">
-                    <strong>Aenean ac cursus</strong>
-                    <div class="progress progress-small progress-striped active">
-                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">80%</div>
-                    </div>
-                    <small class="text-muted">Dmitry Ivaniuk, 24 Sep 2014 / 80%</small>
-                </a>
-
             </div>     
 
             <div class="panel-footer text-center">
-                <a href="pages-tasks.html">{% trans 'Show all notifications' %}</a>
+                <a href="{% url 'get_my_notifications' %}">{% trans 'Show all notifications' %}</a>
             </div>                            
         </div>                        
     </li>
