@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+    {% load i18n %}
+    {% load staticfiles %}
+    {% block breadcrumb %}
+        <ul class="breadcrumb">
+            <li><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>         
+            <li class="active">{% trans 'Notification' %}</li>
+        </ul>
+    {% endblock %}
+
+    {% block main_content %}
+            <div class="row">
+                {% for notification in notifications%}
+                <div class="col-md-4">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-item-content">
+                                <div class="timeline-heading">
+                                    <p> <a href="/cm/view/2/"><h1>{{ notification.template }}</h1></a> </p>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>{{ notification.text }}</p>                                           
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+{% endblock %}
+

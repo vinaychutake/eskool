@@ -18,3 +18,7 @@
 .page-container .page-content .content-frame .content-frame-body{
     margin-left: 0px;
 }
+
+.timeline .timeline-item {
+    width: 100%;
+}
