@@ -1,12 +1,7 @@
 {% extends 'base.html' %}
     {% load i18n %}
     {% load staticfiles %}
-    {% block breadcrumb %}
-        <ul class="breadcrumb">
-            <li><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>         
-            <li> <a href="{% url 'notice_board' %}">{% trans 'NoticeBoard' %}</a></li>
-            <li class='active'>{% trans 'Notice' %}</li>
-        </ul>
+    {% block menu %}
     {% endblock %}
 
     {% block main_content %}
@@ -69,6 +64,8 @@
                 </div>
             </div>
         </div>
+        </div>
+
 {% endblock %}
 {% block bottomjs %}
     {{block.super}}

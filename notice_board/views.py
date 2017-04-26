@@ -99,7 +99,7 @@ class ViewNotice(View):
     def get(self, request, notice_id):
         """
         """
-
+        print '******here************'
         try:
             notice = notice_api.get_notice_obj(notice_id)
             return render(request, 'view_notice.html', {'notice': notice})
@@ -171,7 +171,7 @@ class ListNotices(View):
                        
 
             notice = [index+1,
-                      "<a href=%s>%s</a>" %(reverse('view_notice', kwargs={'notice_id': notice.id}), notice.name),
+                      """<a href=%s data-target="#myModal" data-toggle="modal">%s</a>""" %(reverse('view_notice', kwargs={'notice_id': notice.id}), notice.name),
                       "%s ..." %(notice.text[:30]), naturaltime(notice.creted_on),
 
                       """<a href={0}> <span class='fa fa-pencil'>
