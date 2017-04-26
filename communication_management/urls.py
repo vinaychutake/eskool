@@ -37,4 +37,12 @@ urlpatterns = [
     url(r'^list/$',
         cm_views.ListNotifications.as_view(),
         name='list_notifications'),
+
+    url(r'^notification_board/$',
+        cm_views.NotificationBoard.as_view(),
+        name='notification_board'),
+
+    url(r'view/(?P<notification_id>\d+)/$',
+        cm_views.ViewNotification.as_view(),
+        name='view_notification'),
 ]

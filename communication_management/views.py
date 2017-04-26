@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import View
+from django.core.urlresolvers import reverse
+from django.http import JsonResponse
 from api import *
 from models import NotificationTemplate, Notification
 
@@ -95,8 +97,21 @@ class GetMyNotifications(View):
         """
         """
         user = request.user
-        notifications = get_user_notifications(user)
-        return render(request, 'tets.html', {'user_notification':notifications})
+        page_no = 1#int(request.GET.get('start'))
+        notifications = get_user_notifications(user, paginate=True)
+
+        data = []
+        for index, notifications in enumerate(notifications.get('notifications', [])):
+            notification = [index+1,
+                      "<a href=%s>%s</a>" %(reverse('view_notification',
+                                                    kwargs={'notification_id': notifications.id}),
+                                            notifications.template),
+                      "%s ..." %(notifications.text[:30])]
+            data.append(notification)
+
+        response = {'data': data}
+
+        return JsonResponse(response)
 
 class ListNotifications(View):
     """
@@ -105,4 +120,44 @@ class ListNotifications(View):
     def get(self, request):
         """
         """
-        pass
+        user = request.user
+        page_no = 1#int(request.GET.get('start'))
+        notifications = get_user_notifications(user, paginate=True)
+
+        data = []
+        for index, notifications in enumerate(notifications.get('notifications', [])):
+            notification = [index+1,
+                      "<a href=%s>%s</a>" %(reverse('view_notification',
+                                                    kwargs={'notification_id': notifications.id}),
+                                            notifications.template),
+                      "%s ..." %(notifications.text[:30])]
+            data.append(notification)
+
+        response = {'data': data}
+
+        return JsonResponse(response)
+
+class NotificationBoard(View):
+    """
+    """
+
+    def get(self, request):
+        """
+        """
+
+        return render(request, "notification_base.html")
+
+class ViewNotification(View):
+    """
+    """
+
+    def get(self, request, notification_id):
+        """
+        """
+
+        try:
+            notifications = get_notification_obj(notification_id)
+            print "***********notifications***************",notifications
+            return render(request, 'view_notification.html', {'notice': notifications})
+        except ObjectDoesNotExist:
+            raise Http404

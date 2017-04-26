@@ -14,3 +14,7 @@
     border-color: #af4342;
     padding: 2px 5px;
 }
+
+.page-container .page-content .content-frame .content-frame-body{
+    margin-left: 0px;
+}
