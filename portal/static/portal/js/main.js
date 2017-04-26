@@ -136,7 +136,7 @@
 	 * ------------------------------------------------------ */
 	var ssMenuOnScrolldown = function() {
 
-		var menuTrigger = $('#header-menu-trigger');
+		var menuTrigger = $('#header-login-link');
 
 		$WIN.on('scroll', function() {
 
