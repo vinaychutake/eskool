@@ -77,15 +77,20 @@ class DeleteNotice(View):
         """
         """
         notice_api.delete_notice(notice_id)
+        response = {'success':'true'}
+        return JsonResponse(response)
+ 
 
 class PublishNotice(View):
     """
     """
 
-    def post(self, request, notice_id):
+    def get(self, request, notice_id):
         """
         """
         notice_api.publish_notice(notice_id)
+        response = {'success':'true'}
+        return JsonResponse(response)
 
 class ViewNotice(View):
     """
@@ -151,6 +156,20 @@ class ListNotices(View):
 
         data = []
         for index, notice in enumerate(notices.get('notices', [])):
+            if notice.is_published:
+                    published = """<label class="switch">
+                         <input type="checkbox" class="switch publish_notice" checked value="True" id="{1}"/>
+                       <span></span>
+                       </label>
+                       """.format(notice.is_published, notice.id)
+            else:
+                published = """<label class="switch">
+                         <input type="checkbox" class="switch publish_notice" value="False" id="{1}"/>
+                       <span></span>
+                       </label>
+                       """.format(notice.is_published, notice.id)
+                       
+
             notice = [index+1,
                       "<a href=%s>%s</a>" %(reverse('view_notice', kwargs={'notice_id': notice.id}), notice.name),
                       "%s ..." %(notice.text[:30]), naturaltime(notice.creted_on),
@@ -158,13 +177,7 @@ class ListNotices(View):
                       """<a href={0}> <span class='fa fa-pencil'>
                       </span></a>""".format(reverse('update_notice', kwargs={'notice_id': notice.id})),
 
-                      """
-                       <label class="switch">
-                         <input type="checkbox" class="switch publish_notice" value="{0}" id="{1}"/>
-                       <span></span>
-                       </label>
-                       """.format(notice.is_published, notice.id),
-
+                      published,
                        """<button class="btn btn-default delete_notice" id="{0}">
                        <span class="fa fa-trash-o"></span></button>""".format(notice.id)]
             data.append(notice)
