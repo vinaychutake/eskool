@@ -43,15 +43,7 @@ urlpatterns = [
         sm_views.ViewStaffProfile.as_view(),
         name='staff_profile'),
 
-    url(r'non_teaching/list/$',
-        sm_views.GetNonTeachingStaff.as_view(),
-        name='non_teaching_staff_list'),
-
-    url(r'teachers/list/$',
-        sm_views.GetTeachers.as_view(),
-        name='teachers_list'),
-
-    url(r'$',
+    url(r'staff/$',
         sm_views.StaffManagement.as_view(),
         name='staff_management'),
 

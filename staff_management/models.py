@@ -39,6 +39,24 @@ class Staff(models.Model):
 
     reporting_to = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='team')
 
+    @property 
+    def name(self):
+        return self.user.get_full_name()
+
+    @property 
+    def contact_numbers(self):
+        return ", ".join(contact_number.contact_number for contact_number in self.user.contact_numbers.all())
+
+    @property 
+    def primary_address(self):
+        addresses = self.user.addresses.all()
+        if addresses:
+            return "%s %s %s %s, %s" %(addresses[0].address1, addresses[0].address2,
+                                       addresses[0].address3, addresses[0].city,
+                                       addresses[0].city.state)
+        else:
+            return None
+
     def __str__(self):
         return self.user.get_full_name()
 
