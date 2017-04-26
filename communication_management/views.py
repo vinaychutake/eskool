@@ -108,34 +108,35 @@ class GetMyNotifications(View):
                                             notifications.template),
                       "%s ..." %(notifications.text[:30])]
             data.append(notification)
+        print '--data------',data    
 
         response = {'data': data}
 
         return JsonResponse(response)
 
-class ListNotifications(View):
-    """
-    """
+# class ListNotifications(View):
+#     """
+#     """
 
-    def get(self, request):
-        """
-        """
-        user = request.user
-        page_no = 1#int(request.GET.get('start'))
-        notifications = get_user_notifications(user, paginate=True)
+#     def get(self, request):
+#         """
+#         """
+#         user = request.user
+#         page_no = 1#int(request.GET.get('start'))
+#         notifications = get_user_notifications(user, paginate=True)
 
-        data = []
-        for index, notifications in enumerate(notifications.get('notifications', [])):
-            notification = [index+1,
-                      "<a href=%s>%s</a>" %(reverse('view_notification',
-                                                    kwargs={'notification_id': notifications.id}),
-                                            notifications.template),
-                      "%s ..." %(notifications.text[:30])]
-            data.append(notification)
+#         data = []
+#         for index, notifications in enumerate(notifications.get('notifications', [])):
+#             notification = [index+1,
+#                       "<a href=%s>%s</a>" %(reverse('view_notification',
+#                                                     kwargs={'notification_id': notifications.id}),
+#                                             notifications.template),
+#                       "%s ..." %(notifications.text[:30])]
+#             data.append(notification)
 
-        response = {'data': data}
+#         response = {'data': data}
 
-        return JsonResponse(response)
+#         return JsonResponse(response)
 
 class NotificationBoard(View):
     """
@@ -154,6 +155,7 @@ class ViewNotification(View):
     def get(self, request, notification_id):
         """
         """
+        print '**********here************'
 
         try:
             notifications = get_notification_obj(notification_id)
