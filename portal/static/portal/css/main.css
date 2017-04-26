@@ -1277,13 +1277,13 @@ header .header-logo a {
 /* ------------------------------------------------------------------- 
  * menu trigger - (_layout.css) 
  * ------------------------------------------------------------------- */
-#header-menu-trigger {
+#header-login-link{
   display: block;
   position: fixed;
   right: 32px;
   top: 30px;
   height: 42px;
-  width: 42px;
+  width: 0px;
   line-height: 42px;
   font-family: "montserrat-regular", sans-serif;
   font-size: 1.4rem;
@@ -1296,16 +1296,17 @@ header .header-logo a {
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-#header-menu-trigger.opaque {
+.header-menu-trigger.opaque {
   background-color: #000000;
 }
-#header-menu-trigger.opaque .header-menu-text {
+.header-menu-trigger.opaque .header-menu-text {
   background-color: #000000;
 }
-#header-menu-trigger:hover, #header-menu-trigger:focus {
+.header-menu-trigger:hover, .header-menu-trigger:focus {
   color: #FFFFFF;
 }
-#header-menu-trigger .header-menu-text {
+.header-menu-trigger .header-menu-text {
+  color: #f1f1f1;
   display: block;
   position: absolute;
   top: 0;
@@ -1319,7 +1320,7 @@ header .header-logo a {
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-#header-menu-trigger .header-menu-icon {
+.header-menu-trigger .header-menu-icon {
   display: block;
   height: 3px;
   width: 24px;
@@ -1329,8 +1330,8 @@ header .header-logo a {
   right: 9px;
   margin-top: -1.5px;
 }
-#header-menu-trigger .header-menu-icon::before, 
-#header-menu-trigger .header-menu-icon::after {
+.header-menu-trigger .header-menu-icon::before, 
+.header-menu-trigger .header-menu-icon::after {
   content: '';
   width: 100%;
   height: 100%;
@@ -1338,10 +1339,10 @@ header .header-logo a {
   position: absolute;
   left: 0;
 }
-#header-menu-trigger .header-menu-icon::before {
+.header-menu-trigger .header-menu-icon::before {
   top: -9px;
 }
-#header-menu-trigger .header-menu-icon::after {
+.header-menu-trigger .header-menu-icon::after {
   bottom: -9px;
 }
 
@@ -1495,7 +1496,7 @@ header .header-logo a {
   }
 }
 @media only screen and (max-width: 400px) {
-  #header-menu-trigger .header-menu-text {
+  .header-menu-trigger .header-menu-text {
     display: none;
   }
 }
