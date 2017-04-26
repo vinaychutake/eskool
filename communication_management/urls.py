@@ -34,9 +34,9 @@ urlpatterns = [
         cm_views.GetMyNotifications.as_view(),
         name='get_my_notifications'),
 
-    url(r'^list/$',
-        cm_views.ListNotifications.as_view(),
-        name='list_notifications'),
+    # url(r'^list/$',
+    #     cm_views.ListNotifications.as_view(),
+    #     name='list_notifications'),
 
     url(r'^notification_board/$',
         cm_views.NotificationBoard.as_view(),

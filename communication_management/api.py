@@ -52,7 +52,6 @@ def get_notification_obj(notification_id):
     """
     Returns notification object with given id
     """
-
     return Notification.objects.get(id=notification_id)
 
 def create_notifition(template, receivers, text_data):
