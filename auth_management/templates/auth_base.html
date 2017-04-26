@@ -13,7 +13,10 @@
         <link rel="stylesheet" type="text/css" id="theme" href="{% static 'common/css/styles.css' %}"/>
         <style type="text/css">
             .login-container .login-box .login-logo{
-                background: url({{request.tenant.logo.url}}),url({% static 'common/img/logo.png' %})  top center no-repeat;
+                background: url({{request.tenant.logo_url}}),url({% static 'common/img/logo.png' %})  top center no-repeat;
+            }
+            .login-container{
+                background: url({% static 'common/img/backgrounds/wall_1.jpg' %}) left top repeat #1b1e24;
             }
         </style>
     </head>

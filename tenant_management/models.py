@@ -92,6 +92,8 @@ class Institute(TenantMixin):
     status = models.CharField(max_length=1, choices=choices.STATUS_CHOICES,
                               default=choices.STATUS_TYPE_ACTIVE)
 
+    cover_image = models.ImageField(blank=True, null=True, upload_to="cover_images")
+
     @property
     def is_system(self):
         return self.institute_type == 'S'
@@ -101,3 +103,13 @@ class Institute(TenantMixin):
 
     class Meta:
         db_table = 'tm_institute'
+
+    @property
+    def cover_image_url(self):
+        cover_image_url = '/media/' + self.domain_url + '/' + str(self.cover_image)
+        return cover_image_url
+
+    @property
+    def logo_url(self):
+        logo_url = '/media/' + self.domain_url + '/' + str(self.logo)
+        return logo_url

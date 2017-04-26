@@ -33,12 +33,18 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style type="text/css">
         header .header-logo a{
-            background: url({{request.tenant.logo.url}}),url({% static 'portal/images/logo.png' %}) no-repeat center;
+            background: url({{request.tenant.logo_url}}),url({% static 'portal/images/logo.png' %}) no-repeat center;
             background-size: 57px 27px;
             }
         }
         .header-menu-trigger{
             width: 0px;
+        }
+        #home{
+          background-image: url({{request.tenant.cover_image_url}}), url({% static 'portal/images/hero-bg.jpg' %});
+        }
+        .home-content-tablecell .row{
+          padding-top: 0px;
         }
     </style>
 </head>
@@ -72,17 +78,9 @@
             <div class="row">
                 <div class="col-twelve">                    
                     
-                            <h3 class="animate-intro">We Are Infinity.</h3>
                             <h1 class="animate-intro">
-                            We Craft Stunning  <br>
-                            Digital Experiences.
+                              {{request.tenant.name}}
                             </h1>   
-
-                            <div class="more animate-intro">
-                                <a class="smoothscroll button stroke" href="#about">
-                                    Learn More
-                                </a>
-                            </div>
 
                     </div> <!-- end col-twelve --> 
             </div> <!-- end row --> 
