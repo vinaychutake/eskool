@@ -18,14 +18,14 @@
 
     <!-- CSS
    ================================================== -->
-   <link rel="stylesheet" href="{% static 'portal_site/css/base.css' %}">
-   <link rel="stylesheet" href="{% static 'portal_site/css/vendor.css' %}">  
-   <link rel="stylesheet" href="{% static 'portal_site/css/main.css' %}">  
+   <link rel="stylesheet" href="{% static 'portal/css/base.css' %}">
+   <link rel="stylesheet" href="{% static 'portal/css/vendor.css' %}">  
+   <link rel="stylesheet" href="{% static 'portal/css/main.css' %}">  
 
    <!-- script
    ================================================== -->
-    <script src="{% static 'portal_site/js/modernizr.js' %}"></script>
-    <script src="{% static 'portal_site/js/pace.min.js' %}"></script>
+    <script src="{% static 'portal/js/modernizr.js' %}"></script>
+    <script src="{% static 'portal/js/pace.min.js' %}"></script>
 
    <!-- favicons
     ================================================== -->
@@ -33,11 +33,11 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style type="text/css">
         header .header-logo a{
-            background: url({{request.tenant.logo.url}}),url({% static 'portal_site/images/logo.png' %}) no-repeat center;
+            background: url({{request.tenant.logo.url}}),url({% static 'portal/images/logo.png' %}) no-repeat center;
             background-size: 57px 27px;
             }
         }
-        #header-menu-trigger{
+        .header-menu-trigger{
             width: 0px;
         }
     </style>
@@ -53,7 +53,7 @@
           <a href="index.html">Infinity</a>
        </div> 
 
-        <a id="header-menu-trigger" href={% url 'login' %}>
+        <a class="header-menu-trigger" id="header-login-link" href={% url 'login' %}>
             <span class="header-menu-text">Login</span>
         </a> 
 
@@ -151,17 +151,17 @@
             <div class="col-twelve">
 
                 <div class="client-lists owl-carousel">
-                    <div><img src="{% static 'portal_site/images/clients/mozilla.png' %}" alt=""></div>
-                    <div><img src="{% static 'portal_site/images/clients/bower.png' %}" alt=""></div>
-                    <div><img src="{% static 'portal_site/images/clients/codepen.png' %}" alt=""></div>
-                    <div><img src="{% static 'portal_site/images/clients/envato.png' %}" alt=""></div>
-                    <div><img src="{% static 'portal_site/images/clients/firefox.png' %}" alt=""></div>
-                    <div><img src="{% static 'portal_site/images/clients/grunt.png' %}" alt=""></div>
-                    <div><img src="{% static 'portal_site/images/clients/evernote.png' %}" alt=""></div>
-                    <div><img src="{% static 'portal_site/images/clients/github.png' %}" alt=""></div>
-                    <div><img src="{% static 'portal_site/images/clients/joomla.png' %}" alt=""></div>
-                    <div><img src="{% static 'portal_site/images/clients/jQuery.png' %}" alt=""></div>
-                    <div><img src="{% static 'portal_site/images/clients/wordpress.png' %}" alt=""></div>
+                    <div><img src="{% static 'portal/images/clients/mozilla.png' %}" alt=""></div>
+                    <div><img src="{% static 'portal/images/clients/bower.png' %}" alt=""></div>
+                    <div><img src="{% static 'portal/images/clients/codepen.png' %}" alt=""></div>
+                    <div><img src="{% static 'portal/images/clients/envato.png' %}" alt=""></div>
+                    <div><img src="{% static 'portal/images/clients/firefox.png' %}" alt=""></div>
+                    <div><img src="{% static 'portal/images/clients/grunt.png' %}" alt=""></div>
+                    <div><img src="{% static 'portal/images/clients/evernote.png' %}" alt=""></div>
+                    <div><img src="{% static 'portal/images/clients/github.png' %}" alt=""></div>
+                    <div><img src="{% static 'portal/images/clients/joomla.png' %}" alt=""></div>
+                    <div><img src="{% static 'portal/images/clients/jQuery.png' %}" alt=""></div>
+                    <div><img src="{% static 'portal/images/clients/wordpress.png' %}" alt=""></div>
                 </div>
                 
             </div> 
@@ -207,9 +207,9 @@
    <!-- Java Script
    ================================================== --> 
    
-   <script src="{% static 'portal_site/js/jquery-2.1.3.min.js' %}"></script>
-   <script src="{% static 'portal_site/js/plugins.js' %}"></script>
-   <script src="{% static 'portal_site/js/main.js' %}"></script>
+   <script src="{% static 'portal/js/jquery-2.1.3.min.js' %}"></script>
+   <script src="{% static 'portal/js/plugins.js' %}"></script>
+   <script src="{% static 'portal/js/main.js' %}"></script>
 
 </body>
 
