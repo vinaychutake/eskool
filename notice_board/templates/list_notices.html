@@ -3,14 +3,24 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-body">
+                {% include 'message.html' %}
+                <div class="pull-right">
+                    <a href="{% url 'create_notice' %}">
+                        <button class="btn btn-default btn-success" id="btnPrint">
+                            <span class="fa fa-plus"></span> {% trans 'Add' %}
+                        </button>
+                    </a>
+                </div>
                 <table id="list_notices_table" class="table">
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>{% trans 'Title' %}</th>
-                            <th>{% trans 'Desc'%}</th>
+                            <th>{% trans 'Notice'%}</th>
                             <th>{% trans 'Date' %}</th>
-                            <th>{% trans 'Actions' %}</th>
+                            <th>{% trans 'Edit' %}</th>
+                            <th>{% trans 'Publish' %}</th>
+                            <th>{% trans 'Delete' %}</th>
                         </tr>
                     </thead>
                 </table>                                    

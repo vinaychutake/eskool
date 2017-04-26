@@ -13,7 +13,7 @@ class Notice(StatusMixin):
     Class representing an notice
     """
 
-    name = models.CharField(null=False,max_length=48)
+    name = models.CharField(null=False, max_length=48)
 
     text = models.TextField(null=False, verbose_name=_("text"), blank=False)
     

@@ -1,24 +1,41 @@
 from django.shortcuts import render
 from django.views.generic import View
 from django.core.exceptions import ObjectDoesNotExist
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
 from django.contrib.humanize.templatetags.humanize import naturaltime
 from django.core.urlresolvers import reverse
+from django.utils.translation import ugettext_lazy as _
+from django.contrib import messages
 
 from notice_board import api as notice_api
+from notice_board.forms import NoticeForm
 
 class CreateNotice(View):
     """
     """
 
+    def get(self, request):
+        """
+        """
+
+        form = NoticeForm()
+        return render(request, 'notice.html', {'form': form, 'heading': _('Add')})
+
     def post(self, request):
         """
         """
-        name = request.POST.get('name')
-        creator = request.POST.get('creator')
-        group_names = request.POST.get('group_names')
-        text = request.POST.get('text')
-        notice_api.create_notice(name, creator, group_names, text)
+
+        form = NoticeForm(request.POST)
+        if form.is_valid():
+            text = form.cleaned_data.get('notice')
+            name = form.cleaned_data.get('title')
+            groups = form.cleaned_data.get('to')
+            notice_api.create_notice(name, request.user, groups, text)
+            messages.success(request, _('Notice created successfully.'))
+            return HttpResponseRedirect(reverse('notice_board'))
+        else:
+            messages.error(request, _('Please correct the errors below.'))
+        return render(request, 'notice.html', {'form': form, 'heading': _('Add')})
 
 class UpdateNotice(View):
     """
@@ -29,18 +46,28 @@ class UpdateNotice(View):
         """
         try:
             notice = notice_api.get_notice_obj(notice_id)
-            return render(request, 'update_notice.html', {'notice': notice})
+            form = NoticeForm({'title': notice.name,
+                               'notice': notice.text,
+                               'to': notice.groups.all()})
+            return render(request, 'notice.html', {'form': form, 'heading': _('Edit')})
         except ObjectDoesNotExist:
             raise Http404
 
     def post(self, request, notice_id):
         """
         """
-        text = request.POST.get('text')
-        name = request.POST.get('name')
-        group_names = request.POST.get('group_names')
-        notice_api.update_notice(notice_id, name, group_names, text)
-        return render(request, "notice_base.html")
+
+        form = NoticeForm(request.POST)
+        if form.is_valid():
+            text = form.cleaned_data.get('notice')
+            name = form.cleaned_data.get('title')
+            groups = form.cleaned_data.get('to')
+            notice_api.update_notice(notice_id, name, groups, text)
+            messages.success(request, _('Notice updated successfully.'))
+            return HttpResponseRedirect(reverse('notice_board'))
+        else:
+            messages.error(request, _('Please correct the errors below.'))
+        return render(request, 'notice.html', {'form': form, 'heading': _('Edit')})
 
 class DeleteNotice(View):
     """
@@ -50,7 +77,6 @@ class DeleteNotice(View):
         """
         """
         notice_api.delete_notice(notice_id)
-        pass
 
 class PublishNotice(View):
     """
@@ -60,7 +86,6 @@ class PublishNotice(View):
         """
         """
         notice_api.publish_notice(notice_id)
-        pass
 
 class ViewNotice(View):
     """
@@ -127,14 +152,11 @@ class ListNotices(View):
         data = []
         for index, notice in enumerate(notices.get('notices', [])):
             notice = [index+1,
-                      "<a href=%s>%s</a>" %(reverse('view_notice',
-                                                    kwargs={'notice_id': notice.id}),
-                                            notice.name),
-                      "%s ..." %(notice.text[:30]),
-                      naturaltime(notice.creted_on),
-                      "<a href=%s><span class='fa fa-pencil'></span></a>"%(reverse('update_notice',
-                                                    kwargs={'notice_id': notice.id}))+"</a>"
-                      +"&nbsp;&nbsp;&nbsp;&nbsp;""<a href='javascript:delete_notice(%s);'><span class='fa fa-trash-o'></span></a>"%(notice.id)]
+                      "<a href=%s>%s</a>" %(reverse('view_notice', kwargs={'notice_id': notice.id}), notice.name),
+                      "%s ..." %(notice.text[:30]), naturaltime(notice.creted_on),
+                       """<a href={0}> <span class='fa fa-pencil'>
+                       </span></a>""".format(reverse('update_notice', kwargs={'notice_id': notice.id})),
+                       '', '']
             data.append(notice)
 
         response = {'recordsTotal': notices.get('count'),
