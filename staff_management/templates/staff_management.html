@@ -1,79 +1,103 @@
 {% extends 'base.html' %}
 {% load i18n %}
-{% block main_content %}
-<div class="page-content-wrap">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="widget widget-default widget-item-icon">
-                <div class="widget-item-left">
-                    <span class="fa fa-user"></span>
-                </div>        
-                <div class="widget-data">
-                    <div class="widget-int num-count">48</div>
-                    <div class="widget-title">{% trans 'Teaching Staff' %}</div>
-                </div>
-            </div>            
-        </div>
 
-        <div class="col-md-3">
-            <div class="widget widget-default widget-item-icon">
-                <div class="widget-item-left">
-                    <span class="fa fa-user"></span>
-                </div>        
-                <div class="widget-data">
-                    <div class="widget-int num-count">48</div>
-                    <div class="widget-title">{% trans 'Non Teaching Staff' %}</div>
-                </div>
-            </div>            
-        </div>
-
-    </div>
-</div>
-
-<div class="panel panel-default tabs">                            
-    <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#teaching" role="tab" data-toggle="tab">
-                {% trans 'Teachers' %}
-            </a>
-        </li>
-        <li>
-            <a href="#non_teaching" role="tab" data-toggle="tab">
-                {% trans 'Non Teaching Staff' %}
-            </a>
-        </li>
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>         
+        <li class="active">{% trans 'Staff Management' %}</li>
     </ul>
-
-    <div class="panel-body tab-content">
-        <div class="tab-pane active" id="teaching">
-            {% include 'teaching.html' %}
-        </div>
-        <div class="tab-pane" id="non_teaching">
-            {% include 'non_teaching.html' %}
-        </div>
-    </div>
-</div>
 {% endblock %}
 
-{% block bottomjs %}
-  {{block.super}}
-  <script>
-    $('#teaching_table').DataTable( {
-        "processing": true,
-        "serverSide": true,
-        "searching": false,
-        "ordering": false,
-        "stateSave": true,
-        "ajax": "{% url 'teachers_list' %}"
-    } );
-    $('#non_teaching_table').DataTable( {
-        "processing": true,
-        "serverSide": true,
-        "searching": false,
-        "ordering": false,
-        "stateSave": true,
-        "ajax": "{% url 'non_teaching_staff_list' %}"
-    } );
+{% block main_content %}
+    <div class="page-title">                    
+        <h2>
+            <span class="fa fa-users"></span>
+            {% trans 'Staff' %} <small>{{staff|length}} {% trans 'staff' %}</small>
+        </h2>
+    </div>
 
-   </script>
+{% load i18n %}
+
+<div class="page-content-wrap">
+    <div class="row">
+        {% include 'message.html' %}
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p>
+                        {% trans 'Use search to find staff.' %}
+                    </p>
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-8">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <span class="fa fa-search"></span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Who are you looking for?"/>
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-primary">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="{% url 'create_staff' %}">
+                                    Add
+                                </a>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-info btn-block"><span class="fa fa-file"></span> Upload</button>
+                            </div>
+                        </div>
+                    </form>                                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% for staff_user in staff %}
+        {% if forloop.counter0|divisibleby:4 == 0 or forloop.counter0 == 0 %}
+        <div class="row">
+        {% endif %}
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body profile">
+                        <div class="profile-image">
+                            <img src="assets/images/users/user3.jpg" alt="Nadia Ali"/>
+                        </div>
+                        <div class="profile-data">
+                            <div class="profile-data-name">{{staff_user.name}}</div>
+                            <div class="profile-data-title">{{staff_user.staff_type.name}}</div>
+                        </div>
+                    </div>                                
+                    <div class="panel-body">                                    
+                        <div class="contact-info">
+                            <p>
+                                <small>{% trans 'Mobile' %}</small>
+                                <br/>
+                                {% if staff_user.contact_numbers %}
+                                    {{staff_user.contact_numbers}}
+                                {% else %}
+                                    {% trans 'Not Available' %}
+                                {% endif %}
+                            </p>
+                            <p>
+                                <small>{% trans 'Address' %}</small><br/>
+                                {% if staff_user.primary_address %}
+                                    {{staff_user.primary_address}}
+                                {% else %}
+                                    {% trans 'Not Available' %}
+                                {% endif %}
+                            </p>                                   
+                        </div>
+                    </div>                                
+                </div>
+            </div>
+          {% if forloop.counter0|divisibleby:4 == 3 or forloop.counter0 == 3 %}
+              </div>
+          {% endif %}  
+    {% endfor %}
+</div>
+
 {% endblock %}

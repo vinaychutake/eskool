@@ -50,11 +50,10 @@ class Notification(SoftDeleteMixin):
 
     status = models.CharField(max_length=1, default=NOTIFICATION_ACTIVE, null=False,
                               choices=notification_choices, verbose_name=_("status"))
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='created_notifications')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=False, related_name='created_notifications')
 
     class Meta:
         db_table = "cm_notification"
 
     def __str__(self):
         return self.text
-    
