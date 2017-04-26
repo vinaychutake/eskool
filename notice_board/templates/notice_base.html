@@ -52,7 +52,8 @@
         "ordering": false,
         "stateSave": true,
         "ajax": "{% url 'my_notices' %}"
-    } );
+    });
+
     $('#list_notices_table').DataTable( {
         "processing": true,
         "serverSide": true,
@@ -62,9 +63,13 @@
         "ajax": "{% url 'list_notices' %}"
     } );
 
-    function delete_notice(notice_id) {
-        var notice_id = 1;
-    }
+    $('#manage_notices').on('click', '.delete_notice', function(){
+        console.log($(this).attr('id'))
+    });
 
+    $('#manage_notices').on('click', '.publish_notice', function(){
+        console.log($(this).attr('id'))
+    });
+   
    </script>
 {% endblock %}

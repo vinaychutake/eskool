@@ -154,9 +154,19 @@ class ListNotices(View):
             notice = [index+1,
                       "<a href=%s>%s</a>" %(reverse('view_notice', kwargs={'notice_id': notice.id}), notice.name),
                       "%s ..." %(notice.text[:30]), naturaltime(notice.creted_on),
-                       """<a href={0}> <span class='fa fa-pencil'>
-                       </span></a>""".format(reverse('update_notice', kwargs={'notice_id': notice.id})),
-                       '', '']
+
+                      """<a href={0}> <span class='fa fa-pencil'>
+                      </span></a>""".format(reverse('update_notice', kwargs={'notice_id': notice.id})),
+
+                      """
+                       <label class="switch">
+                         <input type="checkbox" class="switch publish_notice" value="{0}" id="{1}"/>
+                       <span></span>
+                       </label>
+                       """.format(notice.is_published, notice.id),
+
+                       """<button class="btn btn-default delete_notice" id="{0}">
+                       <span class="fa fa-trash-o"></span></button>""".format(notice.id)]
             data.append(notice)
 
         response = {'recordsTotal': notices.get('count'),
