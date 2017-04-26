@@ -83,10 +83,12 @@ def publish_notice(notice_id):
     Publishes the given notice
     Params:
         notice_id: Notice id
-        send_notification: Boolean. Weather to send email/sms notification
     """
     notice = get_notice_obj(notice_id)
-    notice.is_published = True
+    if notice.is_published:
+        notice.is_published = False
+    else:
+        notice.is_published = True
     notice.clean()
     notice.save()
 
