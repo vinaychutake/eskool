@@ -1,11 +1,11 @@
+from django.contrib import messages
 from django.shortcuts import render
 from django.views.generic import View
+from django.core.urlresolvers import reverse
 from django.core.exceptions import ObjectDoesNotExist
+from django.utils.translation import ugettext_lazy as _
 from django.http import JsonResponse, HttpResponseRedirect
 from django.contrib.humanize.templatetags.humanize import naturaltime
-from django.core.urlresolvers import reverse
-from django.utils.translation import ugettext_lazy as _
-from django.contrib import messages
 
 from notice_board import api as notice_api
 from notice_board.forms import NoticeForm
@@ -18,7 +18,7 @@ class CreateNotice(View):
         """
         """
 
-        form = NoticeForm()
+        form = NoticeForm(initial={'notice': ' '})
         return render(request, 'notice.html', {'form': form, 'heading': _('Add')})
 
     def post(self, request):
@@ -77,10 +77,9 @@ class DeleteNotice(View):
         """
         """
         notice_api.delete_notice(notice_id)
-        response = {'success':'true'}
-        return JsonResponse(response)
+        messages.success(request, _('Notice deleted successfully.'))
+        return HttpResponseRedirect(reverse('notice_board'))
  
-
 class PublishNotice(View):
     """
     """
@@ -89,8 +88,7 @@ class PublishNotice(View):
         """
         """
         notice_api.publish_notice(notice_id)
-        response = {'success':'true'}
-        return JsonResponse(response)
+        return HttpResponseRedirect(reverse('notice_board'))
 
 class ViewNotice(View):
     """
@@ -99,7 +97,6 @@ class ViewNotice(View):
     def get(self, request, notice_id):
         """
         """
-        print '******here************'
         try:
             notice = notice_api.get_notice_obj(notice_id)
             return render(request, 'view_notice.html', {'notice': notice})
@@ -125,10 +122,11 @@ class GetMyNotices(View):
         data = []
         for index, notice in enumerate(notices.get('notices', [])):
             notice = [index+1,
-                      "<a href=%s>%s</a>" %(reverse('view_notice',
-                                                    kwargs={'notice_id': notice.id}),
-                                            notice.name),
+
+                      """<a data-toggle="modal" data-target="#noticeModal" href=%s>%s</a>""" %(reverse('view_notice', kwargs={'notice_id': notice.id}), notice.name),
+
                       "%s ..." %(notice.text[:30]),
+
                       naturaltime(notice.creted_on)]
             data.append(notice)
 
@@ -137,7 +135,7 @@ class GetMyNotices(View):
 
         return JsonResponse(response)
 
-class ListNotices(View):
+class ManageNotices(View):
     """
     """
 
@@ -157,29 +155,28 @@ class ListNotices(View):
         data = []
         for index, notice in enumerate(notices.get('notices', [])):
             if notice.is_published:
-                    published = """<label class="switch">
-                         <input type="checkbox" class="switch publish_notice" checked value="True" id="{1}"/>
-                       <span></span>
-                       </label>
-                       """.format(notice.is_published, notice.id)
+                published = """<label class="switch">
+                               <input type="checkbox" class="switch publish_notice" checked value="True" data-box="#mb-publish" notice_id="{1}"/>
+                               <span></span>
+                               </label>""".format(notice.is_published, notice.id)
             else:
                 published = """<label class="switch">
-                         <input type="checkbox" class="switch publish_notice" value="False" id="{1}"/>
-                       <span></span>
-                       </label>
-                       """.format(notice.is_published, notice.id)
-                       
+                               <input type="checkbox" class="switch publish_notice" data-box="#mb-publish" value="False" notice_id="{1}"/>
+                               <span></span></label>""".format(notice.is_published, notice.id)
 
             notice = [index+1,
-                      """<a href=%s class="ls-modal" data-target="#myModal" data-toggle="modal">%s</a>""" %(reverse('view_notice', kwargs={'notice_id': notice.id}), notice.name),
+                      """<a data-toggle="modal" data-target="#noticeModal" href=%s>%s</a>""" %(reverse('view_notice', kwargs={'notice_id': notice.id}), notice.name),
+
                       "%s ..." %(notice.text[:30]), naturaltime(notice.creted_on),
 
                       """<a href={0}> <span class='fa fa-pencil'>
                       </span></a>""".format(reverse('update_notice', kwargs={'notice_id': notice.id})),
 
                       published,
-                       """<button class="btn btn-default delete_notice" id="{0}">
-                       <span class="fa fa-trash-o"></span></button>""".format(notice.id)]
+
+                      """<button class="btn btn-default delete_notice mb-control" data-box="#mb-delete" id="{0}">
+                         <span class="fa fa-trash-o"></span></button>""".format(notice.id)]
+
             data.append(notice)
 
         response = {'recordsTotal': notices.get('count'),
@@ -195,4 +192,4 @@ class NoticeBoard(View):
         """
         """
 
-        return render(request, "notice_base.html")
+        return render(request, "notice_board.html")
