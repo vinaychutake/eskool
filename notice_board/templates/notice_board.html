@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>         
+        <li class="active">{% trans 'NoticeBoard' %}</li>
+    </ul>
+{% endblock %}
+
+{% block main_content %}
+
+<div class="page-title">
+    <h2><span class="fa fa-envelope"></span>
+        {% trans 'NoticeBoard' %}
+    </h2>
+</div>
+
+
+<div class="panel panel-default tabs">                            
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#manage_notices" role="tab" data-toggle="tab">
+                {% trans 'Manage' %}
+            </a>
+        </li>
+        <li>
+            <a href="#my_notices" role="tab" data-toggle="tab">
+                {% trans 'Notices' %}
+            </a>
+        </li>
+    </ul>
+
+    <div class="panel-body tab-content">
+        <div class="tab-pane" id="my_notices">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <table id="my_notices_table" class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>{% trans 'Title' %}</th>
+                                        <th>{% trans 'Notice'%}</th>
+                                        <th>{% trans 'Date' %}</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane active" id="manage_notices">
+            {% include 'manage_notices.html' %}
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="noticeModal" tabindex="-1" role="dialog"
+     aria-labelledby="noticeModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">&times;</button>
+                 <h4 class="modal-title">{% trans 'Notice' %}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="te"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block bottomjs %}
+  {{block.super}}
+  <script>
+
+    var currentNoticeId;
+
+    $('#my_notices_table').DataTable( {
+        "processing": true,
+        "serverSide": true,
+        "searching": false,
+        "ordering": false,
+        "stateSave": true,
+        "ajax": "{% url 'my_notices' %}"
+    });
+
+    $('#manage_notices_table').DataTable( {
+        "processing": true,
+        "serverSide": true,
+        "searching": false,
+        "ordering": false,
+        "stateSave": true,
+        "ajax": "{% url 'manage_notices' %}"
+    } );
+
+
+    $('#manage_notices').on('click', '.delete_notice', function(){
+        currentNoticeId = $(this).attr('id');
+        var box = $($(this).data("box"));
+        if(box.length > 0){
+            box.toggleClass("open");
+        }
+        return false;        
+     });
+
+    $(".mb-control-close").on("click",function(){
+       $(this).parents(".message-box").removeClass("open");
+       return false;
+    });
+
+    $(".mb-control-delete").on("click",function(){
+        window.location.href = "/nb/delete/" + currentNoticeId;
+    });
+
+    $('#manage_notices').on('click', '.publish_notice', function(){
+        currentNoticeId = $(this).attr('notice_id');
+        var publishUrl = "/nb/publish/"+currentNoticeId +"/";
+        $.ajax({url: publishUrl});
+    });
+
+   </script>
+{% endblock %}

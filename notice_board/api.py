@@ -18,10 +18,10 @@ def create_notice(name, creator, groups, text):
 
     notice = Notice(name=name,
                     text=text,
-                    creator=creator,
-                    groups=groups)
+                    creator=creator)
     notice.clean()
     notice.save()
+    notice.groups = groups
 
 def update_notice(notice_id, name, groups, text):
     """
