@@ -8,6 +8,8 @@ from common.choices import GENDER_CHOICES as gender_choices
 
 from tenant_management.models import Address, ContactNumber
 
+from auth_management import signal_receiver
+
 class User(AbstractUser):
     """
     Class Representing an student/teacher/staff/admin
