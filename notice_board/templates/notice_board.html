@@ -20,19 +20,21 @@
 <div class="panel panel-default tabs">                            
     <ul class="nav nav-tabs" role="tablist">
         <li class="active">
-            <a href="#manage_notices" role="tab" data-toggle="tab">
-                {% trans 'Manage' %}
-            </a>
-        </li>
-        <li>
             <a href="#my_notices" role="tab" data-toggle="tab">
                 {% trans 'Notices' %}
             </a>
         </li>
+
+        <li>
+            <a href="#manage_notices" role="tab" data-toggle="tab">
+                {% trans 'Manage' %}
+            </a>
+        </li>
+        
     </ul>
 
     <div class="panel-body tab-content">
-        <div class="tab-pane" id="my_notices">
+        <div class="tab-pane active" id="my_notices">
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
@@ -52,7 +54,7 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane active" id="manage_notices">
+        <div class="tab-pane " id="manage_notices">
             {% include 'manage_notices.html' %}
         </div>
     </div>
