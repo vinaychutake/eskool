@@ -50,7 +50,7 @@ def get_user_notices(user, page_no=1, paginate=True, records_per_page=10):
         Notices in json format
     """
     notices = Notice.objects.filter(groups__id__in=user.groups.all().values_list('id', flat=True), 
-                                    status='A')
+                                    status='A', is_published=True)
 
     return paginate_notices(paginate, notices, records_per_page, page_no)
 

@@ -1,37 +1,15 @@
+<html>
 {% load staticfiles %}
 {% load i18n %}
     <head>
-        <style>
-
-            h3{
-                color: #fff;
-            }
-
-            div.green-board {
-                height: auto;
-                margin: 30px auto;
-                padding: 15px;
-                color: #fff;
-                font-size: 16px;
-                background-color: rgb(6,116,46);
-                border: 14px solid;
-                font-family: 'Roboto Slab', serif;
-                font-style: italic;
-                border-image: url("{% static 'common/img/blackboard.png' %}") 10;
-            }
-
-            div.green-board h3 {
-                color: #FFFF1F
-            }
-
-        </style>
+        <link rel="stylesheet" type="text/css" id="theme" href="{% static 'common/css/styles.css' %}"/>
     </head>
     <body>
-        <div class="content-frame">                                    
+        <div class="content-frame notice-board">
             <div class="row">
                 <div class="col-md-12">
                     <div class="row" id="notice-content">
-                        <div class="green-board">
+                        <div class="green-board ">
                             <small class="pull-right text-muted">
                                 <span class="fa fa-clock-o"></span> {{notice.creted_on}}
                             </small>

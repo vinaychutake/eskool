@@ -19,7 +19,7 @@ class Notice(StatusMixin):
     
     creator = models.ForeignKey(AUTH_USER_MODEL, related_name='notices')
 
-    creted_on = models.DateTimeField(auto_now=True, null=False, blank=False)
+    creted_on = models.DateTimeField(auto_now_add=True, null=False, blank=False)
     
     is_published = models.BooleanField(default=False, blank=False)
 
