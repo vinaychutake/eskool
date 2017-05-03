@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^nb/', include('notice_board.urls')),
     url(r'^cm/', include('communication_management.urls')),
     url(r'^sm/', include('staff_management.urls')),
+    url(r'^am/', include('academics_management.urls')),
 ]
 
 if settings.DEBUG:
