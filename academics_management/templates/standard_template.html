@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>         
+        <li class="active">{% trans 'Academic Template' %}</li>
+    </ul>
+{% endblock %}
+
+{% block main_content %}
+
+<div class="page-title">
+    <h2><span class="fa fa-envelope"></span>
+        {% trans 'Academic Template' %}
+    </h2>
+</div>
+
+
+<div class="panel panel-default tabs">                            
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#manage_std_templates" role="tab" data-toggle="tab">
+                {% trans 'Manage' %}
+            </a>
+        </li>
+
+        <!-- <li>
+            <a href="#my_notices" role="tab" data-toggle="tab">
+                {% trans 'Notices' %}
+            </a>
+        </li> -->
+        
+    </ul>
+
+    <div class="panel-body tab-content">
+        <div class="tab-pane active" id="manage_std_templates">
+            {% include 'manage_std_template.html' %}
+        </div>  
+    </div>
+</div>
+
+<div class="modal fade" id="noticeModal" tabindex="-1" role="dialog"
+     aria-labelledby="noticeModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">&times;</button>
+                 <h4 class="modal-title">{% trans 'Notice' %}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="te"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block bottomjs %}
+  {{block.super}}
+  <script>
+
+    var currentTemplateId;
+
+    /*$('#my_notices_table').DataTable( {
+        "processing": true,
+        "serverSide": true,
+        "searching": false,
+        "ordering": false,
+        "stateSave": true,
+        "ajax": "{% url 'my_notices' %}"
+    });*/
+
+    $('#manage_std_template_table').DataTable( {
+        "processing": true,
+        "serverSide": true,
+        "searching": false,
+        "ordering": false,
+        "stateSave": true,
+        "ajax": "{% url 'manage_std_templates' %}"
+    } );
+
+
+    $('#manage_std_templates').on('click', '.delete_notice', function(){
+        currentTemplateId = $(this).attr('id');
+        var box = $($(this).data("box"));
+        if(box.length > 0){
+            box.toggleClass("open");
+        }
+        return false;
+     });
+
+    $(".mb-control-close").on("click",function(){
+       $(this).parents(".message-box").removeClass("open");
+       return false;
+    });
+
+    $(".mb-control-delete").on("click",function(){
+        window.location.href = "/am/delete/" + currentTemplateId;
+    });
+
+
+    $('.modal').on('hidden.bs.modal', function(e)
+    { 
+        $(this).removeData();
+    });
+
+   </script>
+{% endblock %}
