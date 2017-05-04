@@ -4,8 +4,10 @@ from django.contrib.auth.models import Group
 from django.forms.widgets import SelectMultiple
 
 from academics_management.models import Subject
+from common import choices
 
-class STDTemplateForm(forms.Form):
+
+class AcademicsForm(forms.Form):
     """
     """
 
@@ -13,7 +15,29 @@ class STDTemplateForm(forms.Form):
                             required=True,
                             widget=forms.TextInput(attrs={'class':'form-control'}),
                             help_text=_('Maximum 48 characters are allowed'))
+ 
+class SubjectForm(forms.Form):
+    """
+    """
 
+    name = forms.CharField(max_length=80,
+                            required=True,
+                            widget=forms.TextInput(attrs={'class':'form-control'}),
+                            help_text=_('Maximum 80 characters are allowed'))
+    
+    code = forms.CharField(max_length=16,
+                            required=True,
+                            widget=forms.TextInput(attrs={'class':'form-control'}),
+                            help_text=_('Maximum 16 characters are allowed'))
+
+    status = forms.ChoiceField(choices=choices.STATUS_CHOICES,required=True)
+
+class STDTemplateForm(forms.Form):
+    name = forms.CharField(max_length=80,
+                            required=True,
+                            widget=forms.TextInput(attrs={'class':'form-control'}),
+                            help_text=_('Maximum 80 characters are allowed'))
+    
     code = forms.CharField(max_length=16,
                             required=True,
                             widget=forms.TextInput(attrs={'class':'form-control'}),
