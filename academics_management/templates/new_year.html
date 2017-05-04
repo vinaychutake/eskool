@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>         
+        <li> <a href="{% url 'academic_year' %}">{% trans 'academic_year' %}</a></li>
+        <li class='active'>{% trans 'academic_year' %}</li>
+    </ul>
+{% endblock %}
+
+{% block main_content %}
+    <div class="page-content-wrap">
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal" method="post">
+                    {% csrf_token %}
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <strong>{{heading}}</strong>
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            {% include 'message.html' %}
+                            {% for field in form %}    
+                                <div class="form-group">
+                                    <label class="col-md-3 col-xs-12 control-label">
+                                        {{field.label}} :
+                                    </label>
+                                    <div class="col-md-6 col-xs-12">           
+                                        <div class="input-group">
+                                            {{field}}
+                                        </div>
+                                        {% if field.errors %}
+                                            {% for error in field.errors %}
+                                                <label for="login" class="error">{{error}}</label>
+                                            {% endfor %}
+                                        {% endif %}                                       
+                                        <span class="help-block">
+                                            {{field.help_text}}
+                                        </span>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="panel-footer">
+                            <button class="btn btn-primary pull-right">Submit</button>
+                        </div>
+                    </div>
+                </form>        
+            </div>
+        </div>                    
+    </div>
+{% endblock %}
