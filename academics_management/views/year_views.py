@@ -61,13 +61,12 @@ class AcademicYear(View):
         for index, year in enumerate(years.get('years', [])):
             year = [index+1,
             year.name,
-            year.status,
+            year.get_status_display(),
             """<a href={0}> <span class='fa fa-pencil'>
             </span></a>""".format(reverse('update_year', kwargs={'year_id': year.id})),
             """<button class="btn btn-default delete_year mb-control" data-box="#mb-delete"id="{0}">
             <span class="fa fa-trash-o"></span></button>""".format(year.id)]
             data.append(year)
-        print "data  ::: ", data
 
         response = {'recordsTotal': years.get('count'),
         'data': data, 'recordsFiltered': years.get('count')}
@@ -75,21 +74,27 @@ class AcademicYear(View):
         return JsonResponse(response)
 
 class UpdateYear(View):
-    def post(self, request, year_id):
-        form = AcademicsForm(request.POST)
+    def get(self, request, year_id):
+        year = year_api.get_obj(year_id)
+        form = AcademicsForm({'name':year.name})
+        return render(request, 'new_year.html', {'form': form, 'heading': _('Add')})
         if form.is_valid():
             year_id = year_id
             year_name = form.cleaned_data.get('name','')
             year_api.update_year(year_id, year_name)#, year_status)
-            return HttpResponseRedirect(reverse(acadamic_year))
+            return HttpResponseRedirect(reverse('academic_year'))
         else:
-            pass
-
+            return HttpResponseRedirect(reverse('academic_year'))
+    def post(self, request, year_id):
+        form = AcademicsForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data.get('name')
+            year_api.update_year(year_id, name)
+            return HttpResponseRedirect(reverse('academic_year'))
 
 class DeleteYear(View):
     def get(self, request, year_id):
         """
         """
         year_api.delete_year(year_id)
-        messages.success(request, _('Year deleted successfully.'))
-        return HttpResponseRedirect(reverse('acadamic_year'))
+        return HttpResponseRedirect(reverse('academic_year'))

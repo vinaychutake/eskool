@@ -6,6 +6,10 @@ def create_academics_year(name):
 	year.clean()
 	year.save()
 
+def get_obj(year_id):
+    year = AcademicYear.objects.get(id=year_id)
+    return year
+
 def get_all_years():
 	academic_years = AcademicYear.objects.all()
 	return paginate_years(academic_years)
@@ -17,11 +21,10 @@ def delete_year(year_id):
     year = AcademicYear.objects.get(id=year_id)
     year.delete()
 
-def update_year(year_id, year_name, year_status):
+def update_year(year_id, year_name):
 
     year = AcademicYear.objects.get(id=year_id)
     year.name = year_name
-    #year.status = year_status
     year.save()
 
 def paginate_years(years, records_per_page=10, page_no=1, paginate=True):
