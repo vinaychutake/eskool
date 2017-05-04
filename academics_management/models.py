@@ -30,6 +30,9 @@ class Subject(StatusMixin):
                             blank=False)
 
     teachers = models.ManyToManyField(Teacher, related_name='subjects')
+    creted_on = models.DateTimeField(auto_now_add=True, null=False, blank=False)
+    code = models.CharField(max_length=16, unique=True, null=False, blank=False)
+
 
     def __str__(self):
         return self.name
