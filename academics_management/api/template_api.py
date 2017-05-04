@@ -2,7 +2,7 @@ from common.utils import paginate_objects
 from academics_management.models import StandardTemplate
 
 
-def get_std_templates(creator, return_all=False, page_no=1, paginate=True, records_per_page=10):
+def get_std_templates(return_all=False, page_no=1, paginate=True, records_per_page=10):
     """
     Returns notices to edit
     Params:
@@ -11,18 +11,26 @@ def get_std_templates(creator, return_all=False, page_no=1, paginate=True, recor
         page_no: page_no
         paginate: If False return all objects, else return objects on given page
     """
-    templates = StandardTemplate.objects.filter(status='A')
-
-    return paginate_std_templates(paginate, templates, records_per_page, page_no)
-
-
-def paginate_std_templates(paginate, templates, records_per_page, page_no):
-    """
-    """
+    templates = StandardTemplate.objects.exclude(status='D')
     count = len(templates)
     if paginate:
         templates = paginate_objects(templates, records_per_page, page_no) 
     return {'std_templates': templates, 'count': count, 'returned_count': len(templates)}
+
+def create_std_template(name, code, subjects):
+    """
+    Creates new standard template
+    Params:
+        name: Name of template
+        code : code of template
+        subjects: List of subject names
+    """
+
+    std_template = StandardTemplate(name=name,
+                    code=code)
+    std_template.full_clean()
+    std_template.save()
+    std_template.subjects = subjects
 
 def update_std_template(std_template_id, name, code, subjects):
     """
@@ -38,7 +46,7 @@ def update_std_template(std_template_id, name, code, subjects):
     std_template.subjects = subjects
     std_template.name = name
     std_template.code = code
-    std_template.clean()
+    std_template.full_clean()
     std_template.save()
 
 def get_std_template_obj(std_template_id):
@@ -49,21 +57,6 @@ def get_std_template_obj(std_template_id):
     """
     std_template = StandardTemplate.objects.get(id=std_template_id)
     return std_template
-
-def create_std_template(name, code, subjects):
-    """
-    Creates new standard template
-    Params:
-        name: Name of template
-        code : code of template
-        subjects: List of subject names
-    """
-
-    std_template = StandardTemplate(name=name,
-                    code=code)
-    std_template.clean()
-    std_template.save()
-    std_template.subjects = subjects
 
 def delete_std_template(std_template_id):
     """

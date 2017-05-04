@@ -35,8 +35,6 @@
         </div>
 
         {% block bottomjs %}
-            <audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
-            <audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
             
     		<script type="text/javascript" src="{% static 'common/js/plugins/jquery/jquery.min.js' %}"></script>
     		<script type="text/javascript" src="{% static 'common/js/plugins/jquery/jquery-ui.min.js' %}"></script>
@@ -78,7 +76,11 @@
             <script type="text/javascript" src="{% static 'common/js/jquery.tagsinput.min.js' %}"></script>       
             <script type="text/javascript" src="{% static 'common/js/bootstrap-select.js' %}"></script>        
             <script type="text/javascript" src="{% static 'common/js/bootstrap-file-input.js' %}"></script>
-            <!-- END THIS PAGE PLUGINS-->        
+            <script type="text/javascript" src="{% static 'common/js/plugins/fileinput/fileinput.min.js' %}"></script>
+
+            <script type="text/javascript" src="{% static 'common/js/plugins/jquery-validation/jquery.validate.js' %}"></script>
+
+            <!-- END THIS PAGE PLUGINS-->
 
 
 

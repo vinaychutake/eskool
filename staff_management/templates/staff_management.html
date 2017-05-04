@@ -64,7 +64,11 @@
                 <div class="panel panel-default">
                     <div class="panel-body profile">
                         <div class="profile-image">
-                            <img src="assets/images/users/user3.jpg" alt="Nadia Ali"/>
+                            {% if staff_user.user.profile_pic %}
+                              <img src="{{staff_user.user.profile_pic.url}}" alt="{{staff_user.name}}"/>
+                            {% else %}
+                                <img src="{{staff_user.user.profile_pic}}" alt="{{staff_user.name}}"/>
+                            {% endif %}
                         </div>
                         <div class="profile-data">
                             <div class="profile-data-name">{{staff_user.name}}</div>
@@ -98,6 +102,19 @@
               </div>
           {% endif %}  
     {% endfor %}
+    <div class="row">
+    <div class="col-md-12">
+        <ul class="pagination pagination-sm pull-right push-down-10 push-up-10">
+            <li class="disabled"><a href="#">«</a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>                                    
+            <li><a href="#">»</a></li>
+        </ul>                            
+    </div>
+    </div>
+
 </div>
 
 {% endblock %}

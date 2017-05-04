@@ -22,7 +22,7 @@ class StaffManagement(View):
 
         staff = sm_api.get_staff(page_no=page_no,
                                  paginate=True,
-                                 records_per_page=10)
+                                 records_per_page=8)
 
         return render(request, 'staff_management.html', {'staff': staff})
 
@@ -34,6 +34,8 @@ class CreateStaff(View):
         """
         """
         form  = StaffForm()
+        for field in form:
+            print dir(field.field)
         return render(request, "staff.html", {'form': form, 'heading': _('Add')})
 
     def post(self, request):
@@ -48,7 +50,7 @@ class CreateStaff(View):
             last_name = form.cleaned_data.get('last_name')
             date_of_birth = form.cleaned_data.get('date_of_birth')
             email = form.cleaned_data.get('email')
-            profile_pic = form.cleaned_data.get('profile_pic')
+            profile_pic = request.FILES.get('profile_pic')
             gender = form.cleaned_data.get('gender')
             staff_type = form.cleaned_data.get('staff_type')
             joining_date = form.cleaned_data.get('joining_date')
@@ -58,24 +60,27 @@ class CreateStaff(View):
             address3 = form.cleaned_data.get('address3')
             contact_number = form.cleaned_data.get('contact_num')
             reporting_to = form.cleaned_data.get('reporting_to')
+            try:
+                with transaction.atomic():
 
-            with transaction.atomic():
+                    user = sm_api.create_user(username, first_name, middle_name,
+                                              last_name, date_of_birth,
+                                              email, profile_pic, gender)
 
-                user = sm_api.create_user(username, first_name, middle_name,
-                                          last_name, date_of_birth,
-                                          email, profile_pic, gender)
+                    sm_api.add_user_address(user, address1, address2, address3, city)
 
-                sm_api.add_user_address(user, address1, address2, address3, city)
+                    sm_api.add_user_contactnumber(user, contact_number)
 
-                sm_api.add_user_contactnumber(user, contact_number)
+                    sm_api.create_staff(user, staff_type, joining_date, reporting_to)
+                    messages.success(request, _('New staff user created successfully.'))
+                    return HttpResponseRedirect(reverse('staff_management'))
 
-                sm_api.create_staff(user, staff_type, joining_date, reporting_to)
-
-            messages.success(request, _('New staff user created successfully.'))
-            return HttpResponseRedirect(reverse('staff_management'))
+            except IntegrityError as e:
+                messages.error(request, _('User with this username already exist')) 
         else:
             messages.error(request, _('Please correct the errors below.'))
-            return render(request, "staff.html", {'form': form, 'heading': _('Add')})
+
+        return render(request, "staff.html", {'form': form, 'heading': _('Add')})
 
 class UpdateStaff(View):
     """

@@ -37,14 +37,14 @@
         </li>
 
         <li class="xn-openable">
-           <a href="{% url 'academics_management' %}">
+           <a>
                 <span class="fa fa-university"></span>
                 <span class="xn-text">{% trans 'Academics Management' %}</span>
             </a>
                 <ul>
-                    <li><a href="{% url 'academic_year' %}"><span class="fa fa-file-text-o"></span>Academice Year</a></li>
-                    <li><a href="{% url 'subject_management' %}"><span class="fa fa-book "></span>Subjects</a></li>
-                    <li><a href="{% url 'standard_template' %}"><span class="fa fa-arrow-right"></span>Academice Template</a></li>
+                    <li><a href="{% url 'academic_year_management' %}"><span class="fa fa-file-text-o"></span>{% trans 'Academic Years' %}</a></li>
+                    <li><a href="{% url 'subject_management' %}"><span class="fa fa-book "></span>{% trans 'Subjects' %}</a></li>
+                    <li><a href="{% url 'standard_template_management' %}"><span class="fa fa-arrow-right"></span>{% trans 'Standard Templates' %}</a></li>
                 </ul>
         </li>
         <li>

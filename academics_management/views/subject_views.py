@@ -1,16 +1,16 @@
+from django.contrib import messages
 from django.shortcuts import render
 from django.views.generic import View
 from django.core.urlresolvers import reverse
+from django.core.exceptions import ValidationError
+from django.core.exceptions import ObjectDoesNotExist
+from django.utils.translation import ugettext_lazy as _
 from django.http import JsonResponse, HttpResponseRedirect
 from django.contrib.humanize.templatetags.humanize import naturaltime
-from django.contrib import messages
-from django.utils.translation import ugettext_lazy as _
-from django.core.exceptions import ObjectDoesNotExist
-from django.core.exceptions import ValidationError
-from academics_management.api import subject_api as subject_api
+
+from academics_management.api import subject_api
 from academics_management.forms import SubjectForm
-import pdb
-# Create your views here.
+
 class SubjectManagement(View):
     """
     """
@@ -43,7 +43,16 @@ class CreateSubject(View):
                 code = form.cleaned_data.get('code')
                 subject_api.create_subject(name, status, code)
                 messages.success(request, _('Subject created successfully.'))
-                return HttpResponseRedirect(reverse('subject_management'))
+
+                if 'save_continue' in request.POST:
+                    return HttpResponseRedirect(reverse('update_subject',
+                                                        kwargs={'subject_id': subject_id}))
+                elif 'add_another' in request.POST:    
+                    return HttpResponseRedirect(reverse('create_subject'))
+
+                else:
+                    return HttpResponseRedirect(reverse('subject_management'))
+
             except ValidationError as e:
                 for error,msgs in e:
                     for msg in msgs:
@@ -66,8 +75,8 @@ class GetSubjects(View):
         page_no = page_no / records_per_page + 1
 
         subjects = subject_api.get_subjects(page_no=page_no,
-                                              paginate=True,
-                                              records_per_page=records_per_page)
+                                            paginate=True,
+                                            records_per_page=records_per_page)
 
         data = []
         for index, subject in enumerate(subjects.get('subjects', [])):
@@ -94,12 +103,13 @@ class UpdateSubject(View):
     def get(self, request, subject_id):
         """
         """
-        try:
-            subject = subject_api.get_subject_obj(subject_id)
-            form = SubjectForm({'name': subject.name,'status':subject.status,'code':subject.code})
-            return render(request, 'subject.html', {'form': form, 'heading': _('Edit')})
-        except ObjectDoesNotExist:
-            raise Http404
+        subject = subject_api.get_subject_obj(subject_id)
+        form = SubjectForm({'name': subject.name,
+                            'status':subject.status,
+                            'code':subject.code})
+        return render(request, 'subject.html',
+                      {'form': form, 'heading': _('Edit'),
+                       'subject_id': subject_id})
 
     def post(self, request, subject_id):
         """
@@ -113,6 +123,15 @@ class UpdateSubject(View):
                 code = form.cleaned_data.get('code')
                 subject_api.update_subject(subject_id, name, status, code)
                 messages.success(request, _('Subject updated successfully.'))
+                if 'save_continue' in request.POST:
+                    return HttpResponseRedirect(reverse('update_subject',
+                                                        kwargs={'subject_id': subject_id}))
+                elif 'add_another' in request.POST:    
+                    return HttpResponseRedirect(reverse('create_subject'))
+
+                else:
+                    return HttpResponseRedirect(reverse('subject_management'))
+
                 return HttpResponseRedirect(reverse('subject_management'))
             except ValidationError as e:
                 for error,msgs in e:
@@ -120,7 +139,9 @@ class UpdateSubject(View):
                         messages.error(request,msg)
         else:
             messages.error(request, _('Please correct the errors below.'))
-        return render(request, 'subject.html', {'form': form, 'heading': _('Edit')})
+        return render(request, 'subject.html',
+                      {'form': form, 'heading': _('Edit'),
+                      'subject_id': subject_id})
 
 class DeleteSubject(View):
     """

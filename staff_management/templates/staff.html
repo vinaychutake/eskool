@@ -14,7 +14,7 @@
     <div class="page-content-wrap">
         <div class="row">
             <div class="col-md-12">
-                <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                <form class="form-horizontal" method="post" enctype="multipart/form-data" id='form' novalidate="novalidate">
                     {% csrf_token %}
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -24,33 +24,119 @@
                         </div>
                         <div class="panel-body">
                             {% include 'message.html' %}
-                            {% for field in form %}    
-                                <div class="form-group">
-                                    <label class="col-md-3 col-xs-12 control-label">
-                                        {{field.label}} :
-                                    </label>
-                                    <div class="col-md-6 col-xs-12">           
-                                        <div class="input-group">
-                                            {{field}}
+                            <div class="row">
+                                {% for field in form %}
+                                    <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">
+                                            {{field.label}} :
+                                        </label>
+                                        <div class="col-md-6 col-xs-12">           
+                                            <div class="input-group">
+                                                {{field}}
+                                                {% if field.field.has_group_addon %}
+                                                    <span class="input-group-addon
+                                                             add-on">
+                                                        <span class="glyphicon
+                                                                 glyphicon-{{field.field.glyphicon_class}}">
+                                                        </span>
+                                                </span>    
+                                                {% endif %}
+                                            </div>
+                                            {% if field.errors %}
+                                                {% for error in field.errors %}
+                                                    <label for="login" class="error">{{error}}</label>
+                                                {% endfor %}
+                                            {% endif %}                                       
+                                            <span class="help-block">
+                                                {{field.help_text}}
+                                            </span>
                                         </div>
-                                        {% if field.errors %}
-                                            {% for error in field.errors %}
-                                                <label for="login" class="error">{{error}}</label>
-                                            {% endfor %}
-                                        {% endif %}                                       
-                                        <span class="help-block">
-                                            {{field.help_text}}
-                                        </span>
                                     </div>
-                                </div>
-                            {% endfor %}
+                                    </div>
+                                {% endfor %}
+                            </div>
                         </div>
                         <div class="panel-footer">
-                            <input type='submit' value= "{% trans 'submit' %}" class="btn btn-primary pull-right"/>
+                            <button class="btn btn-primary pull-right" type="submit">
+                                {% trans 'submit' %}
+                            </button>
                         </div>
                     </div>
                 </form>        
             </div>
         </div>                    
     </div>
+{% endblock %}
+
+{% block bottomjs %}
+    {{block.super}}
+    <script>
+        $("#profile-pic").fileinput({
+                showUpload: false,
+                showCaption: false,
+                browseClass: "btn btn-danger",
+                fileType: "any"
+        });
+        var jvalidate = $("#form").validate({
+            ignore: [],
+            rules: {
+                'staff_type': {
+                    required: true
+                },
+                'username': {
+                    required: true,
+                    maxlength: 48
+                },
+                'first_name': {
+                    required: true,
+                    maxlength: 48
+                },
+                'middle_name': {
+                    required: false,
+                    maxlength: 48
+                },
+                'last_name': {
+                    required: true,
+                    maxlength: 48
+                },
+                'date_of_birth': {
+                    required: false,
+                    date: true
+                },
+                'joinning_date': {
+                    required: true,
+                    date: true
+                },
+                'email': {
+                    required: true,
+                    email: true
+                },
+                'gender': {
+                    required: true
+                },
+                'contact_num': {
+                    required: true
+                },
+                'reporting_to': {
+                    required: false
+                },
+                'state': {
+                    required: true
+                },
+                'city': {
+                    required: true
+                },
+                'address1': {
+                    required: true
+                },
+                'address2': {
+                    required: false
+                },
+                'address3': {
+                    required: false
+                }
+            }                                        
+        });
+    </script>   
 {% endblock %}

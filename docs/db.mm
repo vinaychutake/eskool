@@ -1,6 +1,6 @@
 <map version="1.0.1">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
-<node CREATED="1491812991422" ID="ID_1203633332" MODIFIED="1492838027031" TEXT="DB">
+<node CREATED="1491812991422" ID="ID_1203633332" MODIFIED="1493793132698" TEXT="DB">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -98,7 +98,8 @@
       </li>
     </ol>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <node BACKGROUND_COLOR="#94fea5" CREATED="1491988018840" FOLDED="true" HGAP="28" ID="ID_1730434729" MODIFIED="1493791768862" POSITION="right" TEXT="tm_state" VSHIFT="247">
 <node CREATED="1491988050311" ID="ID_1470197664" MODIFIED="1491988176603" TEXT="id: int, ai, pk">
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_1470197664" ENDARROW="Default" ENDINCLINATION="160;0;" ID="Arrow_ID_1544860028" SOURCE="ID_20592787" STARTARROW="None" STARTINCLINATION="160;0;"/>
@@ -124,7 +125,7 @@
 </html></richcontent>
 </node>
 </node>
-<node BACKGROUND_COLOR="#94fea5" CREATED="1491988123318" FOLDED="true" HGAP="24" ID="ID_1606327390" MODIFIED="1493791767918" POSITION="right" TEXT="tm_city" VSHIFT="-5">
+<node BACKGROUND_COLOR="#94fea5" CREATED="1491988123318" FOLDED="true" HGAP="24" ID="ID_1606327390" MODIFIED="1493793132741" POSITION="right" TEXT="tm_city" VSHIFT="-5">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -134,7 +135,8 @@
       unique(name, state)
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <node CREATED="1491988050311" ID="ID_353947200" MODIFIED="1491988436110" TEXT="id: int, ai, pk">
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_353947200" ENDARROW="Default" ENDINCLINATION="244;0;" ID="Arrow_ID_377102934" SOURCE="ID_882857864" STARTARROW="None" STARTINCLINATION="244;0;"/>
 </node>
@@ -198,7 +200,7 @@
 </html></richcontent>
 </node>
 </node>
-<node BACKGROUND_COLOR="#94fea5" CREATED="1475205406481" FOLDED="true" HGAP="21" ID="ID_958304365" MODIFIED="1493791766528" POSITION="right" TEXT="tm_institute" VSHIFT="-20">
+<node BACKGROUND_COLOR="#94fea5" CREATED="1475205406481" FOLDED="true" HGAP="21" ID="ID_958304365" MODIFIED="1493793132766" POSITION="right" TEXT="tm_institute" VSHIFT="-20">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -208,7 +210,8 @@
       Table for client (coaching class/school).
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <node CREATED="1475205425343" ID="ID_1864710768" MODIFIED="1475811353656" TEXT="id: int, ai, pk"/>
 <node CREATED="1475205541841" ID="ID_1101682600" MODIFIED="1475205566005" TEXT="name: varchar(80), not null, unique"/>
 <node CREATED="1475205669138" ID="ID_319416483" MODIFIED="1475205681904" TEXT="code: varchar(48), not null, unique"/>
@@ -272,7 +275,7 @@
 </html></richcontent>
 </node>
 </node>
-<node BACKGROUND_COLOR="#fef794" CREATED="1475206588678" FOLDED="true" ID="ID_1342525024" MODIFIED="1493790844854" POSITION="right" TEXT="am_user">
+<node BACKGROUND_COLOR="#fef794" CREATED="1475206588678" FOLDED="true" ID="ID_1342525024" MODIFIED="1493793132784" POSITION="right" TEXT="am_user">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -282,7 +285,8 @@
       have to extend django's user model
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <node CREATED="1475205425343" ID="ID_506772145" MODIFIED="1492867146249" TEXT="id: int, ai, pk">
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_506772145" ENDARROW="Default" ENDINCLINATION="285;0;" ID="Arrow_ID_430902311" SOURCE="ID_1875423884" STARTARROW="None" STARTINCLINATION="285;0;"/>
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_506772145" ENDARROW="Default" ENDINCLINATION="285;0;" ID="Arrow_ID_1188638099" SOURCE="ID_1153090154" STARTARROW="None" STARTINCLINATION="285;0;"/>
@@ -325,7 +329,7 @@
 </node>
 <node CREATED="1475206886094" ID="ID_389554503" MODIFIED="1475206895813" TEXT="is_deleted: boolean, default False"/>
 </node>
-<node BACKGROUND_COLOR="#fef794" CREATED="1491988615159" FOLDED="true" ID="ID_1820566652" MODIFIED="1493790845949" POSITION="right" TEXT="am_user_address_map">
+<node BACKGROUND_COLOR="#fef794" CREATED="1491988615159" FOLDED="true" ID="ID_1820566652" MODIFIED="1493793132793" POSITION="right" TEXT="am_user_address_map">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -335,7 +339,8 @@
       unique(user, address)
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <node CREATED="1491988635822" ID="ID_1875423884" MODIFIED="1491988661098" TEXT="user: int, fk(am_user: id), not null">
 <arrowlink DESTINATION="ID_506772145" ENDARROW="Default" ENDINCLINATION="285;0;" ID="Arrow_ID_430902311" STARTARROW="None" STARTINCLINATION="285;0;"/>
 </node>
@@ -362,7 +367,7 @@
 <arrowlink DESTINATION="ID_1987699903" ENDARROW="Default" ENDINCLINATION="323;0;" ID="Arrow_ID_421844325" STARTARROW="None" STARTINCLINATION="323;0;"/>
 </node>
 </node>
-<node BACKGROUND_COLOR="#fef794" CREATED="1479790673602" ID="ID_1496439367" MODIFIED="1492844877989" POSITION="right" TEXT="am_group">
+<node BACKGROUND_COLOR="#fef794" CREATED="1479790673602" ID="ID_1496439367" MODIFIED="1493793132806" POSITION="right" TEXT="am_group">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -378,10 +383,11 @@
       e.g. - Receptionist, Accoutant
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <arrowlink COLOR="#b0b0b0" DESTINATION="ID_1967933908" ENDARROW="Default" ENDINCLINATION="984;0;" ID="Arrow_ID_1734518725" STARTARROW="None" STARTINCLINATION="984;0;"/>
 </node>
-<node BACKGROUND_COLOR="#fef794" CREATED="1479790699736" ID="ID_504338868" MODIFIED="1492844882755" POSITION="right" TEXT="am_permission">
+<node BACKGROUND_COLOR="#fef794" CREATED="1479790699736" ID="ID_504338868" MODIFIED="1493793132819" POSITION="right" TEXT="am_permission">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -391,9 +397,10 @@
       Djangos permission model
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
-<node BACKGROUND_COLOR="#fef794" CREATED="1479790719159" ID="ID_923548273" MODIFIED="1492844884586" POSITION="right" TEXT="am_group_permission_map">
+<node BACKGROUND_COLOR="#fef794" CREATED="1479790719159" ID="ID_923548273" MODIFIED="1493793132826" POSITION="right" TEXT="am_group_permission_map">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -403,9 +410,10 @@
       Djangos group permission map table
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
-<node BACKGROUND_COLOR="#fef794" CREATED="1479790761054" ID="ID_1217484472" MODIFIED="1492844886628" POSITION="right" TEXT="am_user_group_map">
+<node BACKGROUND_COLOR="#fef794" CREATED="1479790761054" ID="ID_1217484472" MODIFIED="1493793132839" POSITION="right" TEXT="am_user_group_map">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -415,9 +423,10 @@
       User group map
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
-<node BACKGROUND_COLOR="#fe949d" CREATED="1475602719211" FOLDED="true" HGAP="45" ID="ID_1517393139" MODIFIED="1493791901304" POSITION="left" TEXT="acm_academic_year" VSHIFT="238">
+<node BACKGROUND_COLOR="#fe949d" CREATED="1475602719211" FOLDED="true" HGAP="45" ID="ID_1517393139" MODIFIED="1493793132847" POSITION="left" TEXT="acm_academic_year" VSHIFT="238">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -427,7 +436,8 @@
       e.g. 2015-16, 2014-15, 2013-14
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <node CREATED="1475205425343" ID="ID_1058266612" MODIFIED="1491816622409" TEXT="id: int, ai, pk">
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_1058266612" ENDARROW="Default" ENDINCLINATION="466;0;" ID="Arrow_ID_1888153003" SOURCE="ID_311848433" STARTARROW="None" STARTINCLINATION="466;0;"/>
 </node>
@@ -451,7 +461,7 @@
 </html></richcontent>
 </node>
 </node>
-<node BACKGROUND_COLOR="#fe949d" CREATED="1475603312205" FOLDED="true" HGAP="41" ID="ID_1709206610" MODIFIED="1493791730991" POSITION="left" TEXT="acm_subject" VSHIFT="-2">
+<node BACKGROUND_COLOR="#fe949d" CREATED="1475603312205" FOLDED="true" HGAP="41" ID="ID_1709206610" MODIFIED="1493793132854" POSITION="left" TEXT="acm_subject" VSHIFT="-2">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -461,7 +471,8 @@
       e.g. Mathematics, Science, History
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <node CREATED="1475205425343" ID="ID_1485683775" MODIFIED="1491820301638" TEXT="id: int, ai, pk">
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_1485683775" ENDARROW="Default" ENDINCLINATION="259;0;" ID="Arrow_ID_755531469" SOURCE="ID_739478321" STARTARROW="None" STARTINCLINATION="259;0;"/>
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_1485683775" ENDARROW="Default" ENDINCLINATION="399;0;" ID="Arrow_ID_341975188" SOURCE="ID_806215496" STARTARROW="None" STARTINCLINATION="399;0;"/>
@@ -488,7 +499,7 @@
 </html></richcontent>
 </node>
 </node>
-<node BACKGROUND_COLOR="#fe949d" CREATED="1477459863297" FOLDED="true" HGAP="49" ID="ID_1639454538" MODIFIED="1493791025357" POSITION="left" TEXT="acm_subject_teacher_map" VSHIFT="-3">
+<node BACKGROUND_COLOR="#fe949d" CREATED="1477459863297" FOLDED="true" HGAP="49" ID="ID_1639454538" MODIFIED="1493793132861" POSITION="left" TEXT="acm_subject_teacher_map" VSHIFT="-3">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -498,7 +509,8 @@
       unique(subject, teacher)
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <node CREATED="1475812249922" ID="ID_739478321" MODIFIED="1491816459708" TEXT="subject: int, fk(acm_subject: id), not null">
 <arrowlink DESTINATION="ID_1485683775" ENDARROW="Default" ENDINCLINATION="259;0;" ID="Arrow_ID_755531469" STARTARROW="None" STARTINCLINATION="259;0;"/>
 </node>
@@ -506,7 +518,7 @@
 <arrowlink DESTINATION="ID_1681654105" ENDARROW="Default" ENDINCLINATION="833;0;" ID="Arrow_ID_1231445063" STARTARROW="None" STARTINCLINATION="833;0;"/>
 </node>
 </node>
-<node BACKGROUND_COLOR="#fe949d" CREATED="1475603071788" HGAP="47" ID="ID_140098921" MODIFIED="1493791736583" POSITION="left" TEXT="acm_standard_template">
+<node BACKGROUND_COLOR="#fe949d" CREATED="1475603071788" FOLDED="true" HGAP="47" ID="ID_140098921" MODIFIED="1493793132871" POSITION="left" TEXT="acm_standard_template">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -516,7 +528,8 @@
       e.g. 5th, 6th, 7th, 8th
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <node CREATED="1475205425343" ID="ID_1757961434" MODIFIED="1475836803137" TEXT="id: int, ai, pk">
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_1757961434" ENDARROW="Default" ENDINCLINATION="401;0;" ID="Arrow_ID_1877609495" SOURCE="ID_796589400" STARTARROW="None" STARTINCLINATION="401;0;"/>
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_1757961434" ENDARROW="Default" ENDINCLINATION="401;0;" ID="Arrow_ID_1200339825" SOURCE="ID_1172410115" STARTARROW="None" STARTINCLINATION="401;0;"/>
@@ -546,7 +559,7 @@
 </html></richcontent>
 </node>
 </node>
-<node BACKGROUND_COLOR="#fe949d" CREATED="1475811414453" HGAP="41" ID="ID_297650788" MODIFIED="1493791739366" POSITION="left" TEXT="acm_standard_template_subject_map" VSHIFT="2">
+<node BACKGROUND_COLOR="#fe949d" CREATED="1475811414453" FOLDED="true" HGAP="41" ID="ID_297650788" MODIFIED="1493793132182" POSITION="left" TEXT="acm_standard_template_subject_map" VSHIFT="2">
 <node CREATED="1475812222728" ID="ID_796589400" MODIFIED="1475837358099" TEXT="standard_template: int, fk(acm_standard_template: id), not null">
 <arrowlink DESTINATION="ID_1757961434" ENDARROW="Default" ENDINCLINATION="401;0;" ID="Arrow_ID_1877609495" STARTARROW="None" STARTINCLINATION="401;0;"/>
 </node>
@@ -554,7 +567,7 @@
 <arrowlink DESTINATION="ID_1485683775" ENDARROW="Default" ENDINCLINATION="399;0;" ID="Arrow_ID_341975188" STARTARROW="None" STARTINCLINATION="399;0;"/>
 </node>
 </node>
-<node BACKGROUND_COLOR="#fe949d" CREATED="1475836933192" FOLDED="true" HGAP="41" ID="ID_899039728" MODIFIED="1493791099509" POSITION="left" TEXT="acm_standard" VSHIFT="-3">
+<node BACKGROUND_COLOR="#fe949d" CREATED="1475836933192" FOLDED="true" HGAP="41" ID="ID_899039728" MODIFIED="1493802358317" POSITION="left" TEXT="acm_standard" VSHIFT="-3">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -583,7 +596,7 @@
 <node CREATED="1475837373533" ID="ID_311848433" MODIFIED="1491816622409" TEXT="academic_year: int, fk(acm_academic_year: id), not null">
 <arrowlink COLOR="#b0b0b0" DESTINATION="ID_1058266612" ENDARROW="Default" ENDINCLINATION="466;0;" ID="Arrow_ID_1888153003" STARTARROW="None" STARTINCLINATION="466;0;"/>
 </node>
-<node CREATED="1475205618928" ID="ID_1076976718" MODIFIED="1479894854002" TEXT="status: char(1), not null, default A">
+<node CREATED="1475205618928" ID="ID_1076976718" MODIFIED="1493793132898" TEXT="status: char(1), not null, default A">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -602,7 +615,8 @@
       F: Frozen
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
 </node>
 <node BACKGROUND_COLOR="#fe949d" CREATED="1475836933192" FOLDED="true" HGAP="40" ID="ID_461265827" MODIFIED="1493114220273" POSITION="left" TEXT="acm_standard_subject_map" VSHIFT="4">
@@ -616,7 +630,7 @@
 <arrowlink DESTINATION="ID_1485683775" ENDARROW="Default" ENDINCLINATION="497;0;" ID="Arrow_ID_892412924" STARTARROW="None" STARTINCLINATION="497;0;"/>
 </node>
 </node>
-<node BACKGROUND_COLOR="#d6d2f9" CREATED="1491989193759" FOLDED="true" HGAP="33" ID="ID_424435231" MODIFIED="1493116322947" POSITION="right" TEXT="sm_staff_type" VSHIFT="20">
+<node BACKGROUND_COLOR="#d6d2f9" CREATED="1491989193759" FOLDED="true" HGAP="33" ID="ID_424435231" MODIFIED="1493793132918" POSITION="right" TEXT="sm_staff_type" VSHIFT="20">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -644,7 +658,8 @@
       On create need to create corresponding group
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <node CREATED="1491989215286" ID="ID_568970241" MODIFIED="1491989473582" TEXT="id: int, ai, pk">
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_568970241" ENDARROW="Default" ENDINCLINATION="142;0;" ID="Arrow_ID_837250156" SOURCE="ID_148786490" STARTARROW="None" STARTINCLINATION="142;0;"/>
 </node>
@@ -726,7 +741,7 @@
 <arrowlink DESTINATION="ID_722675955" ENDARROW="Default" ENDINCLINATION="187;0;" ID="Arrow_ID_1140722718" STARTARROW="None" STARTINCLINATION="187;0;"/>
 </node>
 </node>
-<node BACKGROUND_COLOR="#fe949d" CREATED="1475812552102" FOLDED="true" HGAP="56" ID="ID_1446602425" MODIFIED="1493791106580" POSITION="left" TEXT="acm_division" VSHIFT="10">
+<node BACKGROUND_COLOR="#fe949d" CREATED="1475812552102" FOLDED="true" HGAP="56" ID="ID_1446602425" MODIFIED="1493793132931" POSITION="left" TEXT="acm_division" VSHIFT="10">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -739,7 +754,8 @@
       e.g. 9th(2015-16)-A, 9th(2015-16)-B, 9th(2015-16)-C
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <node CREATED="1475205425343" ID="ID_1904693336" MODIFIED="1492334601384" TEXT="id: int, ai, pk">
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_1904693336" ENDARROW="Default" ENDINCLINATION="222;0;" ID="Arrow_ID_1884456744" SOURCE="ID_1734435361" STARTARROW="None" STARTINCLINATION="222;0;"/>
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_1904693336" ENDARROW="Default" ENDINCLINATION="315;0;" ID="Arrow_ID_1719057504" SOURCE="ID_158065377" STARTARROW="None" STARTINCLINATION="315;0;"/>
@@ -795,7 +811,7 @@
 <arrowlink DESTINATION="ID_1904693336" ENDARROW="Default" ENDINCLINATION="222;0;" ID="Arrow_ID_1884456744" STARTARROW="None" STARTINCLINATION="222;0;"/>
 </node>
 </node>
-<node BACKGROUND_COLOR="#fe949d" CREATED="1475813502445" FOLDED="true" HGAP="55" ID="ID_1613151247" MODIFIED="1493791108268" POSITION="left" TEXT="acm_division_subject_teacher_map" VSHIFT="-10">
+<node BACKGROUND_COLOR="#fe949d" CREATED="1475813502445" FOLDED="true" HGAP="55" ID="ID_1613151247" MODIFIED="1493793132946" POSITION="left" TEXT="acm_division_subject_teacher_map" VSHIFT="-10">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -805,7 +821,8 @@
       unique(division_subject, teacher)
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <node CREATED="1475813599682" ID="ID_1176691367" MODIFIED="1492271469393" TEXT="teacher: int, fk(am_teacher: id), not null">
 <arrowlink DESTINATION="ID_1681654105" ENDARROW="Default" ENDINCLINATION="902;0;" ID="Arrow_ID_15571051" STARTARROW="None" STARTINCLINATION="902;0;"/>
 </node>
@@ -821,7 +838,7 @@
 <arrowlink DESTINATION="ID_1681654105" ENDARROW="Default" ENDINCLINATION="902;0;" ID="Arrow_ID_252639565" STARTARROW="None" STARTINCLINATION="902;0;"/>
 </node>
 </node>
-<node BACKGROUND_COLOR="#40e8da" CREATED="1475813101826" HGAP="80" ID="ID_1406548288" MODIFIED="1493791671223" POSITION="left" TEXT="sym_topic" VSHIFT="19">
+<node BACKGROUND_COLOR="#40e8da" CREATED="1475813101826" FOLDED="true" HGAP="80" ID="ID_1406548288" MODIFIED="1493802358320" POSITION="left" TEXT="sym_topic" VSHIFT="19">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -837,7 +854,8 @@
       e.g. Trignometry
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <icon BUILTIN="go"/>
 <node CREATED="1475205425343" ID="ID_1579597924" MODIFIED="1475813396966" TEXT="id: int, ai, pk">
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_1579597924" ENDARROW="Default" ENDINCLINATION="244;0;" ID="Arrow_ID_1584319490" SOURCE="ID_552062165" STARTARROW="None" STARTINCLINATION="244;0;"/>
@@ -846,7 +864,7 @@
 <node CREATED="1475813202078" ID="ID_10571724" MODIFIED="1492271803521" TEXT="standard_subject: int, fk(acm_standard_subject_map: id), not null">
 <arrowlink DESTINATION="ID_1246281565" ENDARROW="Default" ENDINCLINATION="433;0;" ID="Arrow_ID_262573537" STARTARROW="None" STARTINCLINATION="433;0;"/>
 </node>
-<node CREATED="1475813277741" ID="ID_270113444" MODIFIED="1475813306375" TEXT="duration: int, not null">
+<node CREATED="1475813277741" ID="ID_270113444" MODIFIED="1493793132984" TEXT="duration: int, not null">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -856,9 +874,10 @@
       Duration required to teach this topic. in minutes
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
-<node CREATED="1475205618928" ID="ID_1480144213" MODIFIED="1492271816895" TEXT="status: char(1), not null, default A">
+<node CREATED="1475205618928" ID="ID_1480144213" MODIFIED="1493793132992" TEXT="status: char(1), not null, default A">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -874,10 +893,11 @@
       D: Deleted
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
 </node>
-<node BACKGROUND_COLOR="#40e8da" CREATED="1475813322269" HGAP="87" ID="ID_1593718731" MODIFIED="1493791702071" POSITION="left" TEXT="sym_sub_topic" VSHIFT="-49">
+<node BACKGROUND_COLOR="#40e8da" CREATED="1475813322269" FOLDED="true" HGAP="87" ID="ID_1593718731" MODIFIED="1493802358320" POSITION="left" TEXT="sym_sub_topic" VSHIFT="-49">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -893,14 +913,15 @@
       e.g. Derivative , integration
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <icon BUILTIN="go"/>
 <node CREATED="1475205425343" ID="ID_1221217368" MODIFIED="1479824317911" TEXT="id: int, ai, pk"/>
 <node CREATED="1475813186578" ID="ID_1290501872" MODIFIED="1475813375893" TEXT="name: varchar(80), not null"/>
 <node CREATED="1475813379369" ID="ID_552062165" MODIFIED="1491818943962" TEXT="sm_topic: int, fk(sm_topic: id), not null">
 <arrowlink COLOR="#b0b0b0" DESTINATION="ID_1579597924" ENDARROW="Default" ENDINCLINATION="244;0;" ID="Arrow_ID_1584319490" STARTARROW="None" STARTINCLINATION="244;0;"/>
 </node>
-<node CREATED="1475205618928" ID="ID_1955380066" MODIFIED="1476722545058" TEXT="status: char(1), not null, default A">
+<node CREATED="1475205618928" ID="ID_1955380066" MODIFIED="1493793133026" TEXT="status: char(1), not null, default A">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -916,7 +937,8 @@
       D: Deleted
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
 </node>
 <node BACKGROUND_COLOR="#8aa298" CREATED="1491820038142" FOLDED="true" HGAP="78" ID="ID_196966452" MODIFIED="1492280669005" POSITION="left" TEXT="ttm_resource_type" VSHIFT="-9">
@@ -1005,7 +1027,7 @@
 </html></richcontent>
 </node>
 </node>
-<node BACKGROUND_COLOR="#8aa298" CREATED="1492277746708" FOLDED="true" HGAP="86" ID="ID_1085172620" MODIFIED="1492317202512" POSITION="left" TEXT="ttm_lecture" VSHIFT="-30">
+<node BACKGROUND_COLOR="#8aa298" CREATED="1492277746708" FOLDED="true" HGAP="86" ID="ID_1085172620" MODIFIED="1493793133040" POSITION="left" TEXT="ttm_lecture" VSHIFT="-30">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -1015,7 +1037,8 @@
       unique(name, division)
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <icon BUILTIN="go"/>
 <node CREATED="1475205425343" ID="ID_250221796" MODIFIED="1492279197259" TEXT="id: int, ai, pk">
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_250221796" ENDARROW="Default" ENDINCLINATION="230;0;" ID="Arrow_ID_561779983" SOURCE="ID_1594793882" STARTARROW="None" STARTINCLINATION="230;0;"/>
@@ -1076,7 +1099,7 @@
 <node CREATED="1492322634221" ID="ID_1100447480" MODIFIED="1492322655898" TEXT="total_fees: decimal, null"/>
 <node CREATED="1492320210788" ID="ID_577227543" MODIFIED="1492320223071" TEXT="roll_no:varchar(8), not null, unique"/>
 </node>
-<node BACKGROUND_COLOR="#a49a4a" CREATED="1492280259708" FOLDED="true" HGAP="29" ID="ID_962967072" MODIFIED="1492866497585" POSITION="right" TEXT="hm_homework_type" VSHIFT="24">
+<node BACKGROUND_COLOR="#a49a4a" CREATED="1492280259708" FOLDED="true" HGAP="29" ID="ID_962967072" MODIFIED="1493793133056" POSITION="right" TEXT="hm_homework_type" VSHIFT="24">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -1086,7 +1109,8 @@
       unique(name, division_subject)
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <icon BUILTIN="go"/>
 <node CREATED="1492280280117" ID="ID_164406160" MODIFIED="1492280528883" TEXT="id: int, ai, pk">
 <linktarget COLOR="#b0b0b0" DESTINATION="ID_164406160" ENDARROW="Default" ENDINCLINATION="299;0;" ID="Arrow_ID_561294972" SOURCE="ID_1526922890" STARTARROW="None" STARTINCLINATION="299;0;"/>
@@ -1249,7 +1273,7 @@
 <arrowlink DESTINATION="ID_1408909759" ENDARROW="Default" ENDINCLINATION="381;0;" ID="Arrow_ID_724149585" STARTARROW="None" STARTINCLINATION="381;0;"/>
 </node>
 </node>
-<node BACKGROUND_COLOR="#f67c0a" CREATED="1475934393563" FOLDED="true" HGAP="39" ID="ID_1591729288" MODIFIED="1492348125740" POSITION="right" TEXT="atm_student_attendance" VSHIFT="12">
+<node BACKGROUND_COLOR="#f67c0a" CREATED="1475934393563" FOLDED="true" HGAP="39" ID="ID_1591729288" MODIFIED="1493793133084" POSITION="right" TEXT="atm_student_attendance" VSHIFT="12">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -1259,7 +1283,8 @@
       unique(lecture, student, date)
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <icon BUILTIN="go"/>
 <node CREATED="1475915510894" ID="ID_1879831804" MODIFIED="1475933822794" TEXT="id: int, ai, pk"/>
 <node CREATED="1475934433283" ID="ID_606242184" MODIFIED="1492278773158" TEXT="in_time: datetime, null"/>
@@ -1290,7 +1315,7 @@
 </html></richcontent>
 </node>
 </node>
-<node BACKGROUND_COLOR="#f67c0a" CREATED="1492281265020" FOLDED="true" HGAP="39" ID="ID_464304164" MODIFIED="1492348134935" POSITION="right" TEXT="atm_staff_attendance" VSHIFT="-2">
+<node BACKGROUND_COLOR="#f67c0a" CREATED="1492281265020" FOLDED="true" HGAP="39" ID="ID_464304164" MODIFIED="1493793133091" POSITION="right" TEXT="atm_staff_attendance" VSHIFT="-2">
 <richcontent TYPE="NOTE"><html>
   <head>
     
@@ -1300,7 +1325,8 @@
       unique(staff, date)
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <icon BUILTIN="go"/>
 <node CREATED="1475915510894" ID="ID_1051705631" MODIFIED="1475933822794" TEXT="id: int, ai, pk"/>
 <node CREATED="1491821331155" ID="ID_405038007" MODIFIED="1491821338664" TEXT="date: datetime. not null"/>

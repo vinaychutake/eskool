@@ -46,3 +46,8 @@
 .divider{
     margin:5px;
 }
+.alert-error {
+    background-color: #E04B4A;
+    color: #FFF;
+    border-color: #af4342;
+}

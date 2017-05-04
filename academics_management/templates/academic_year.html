@@ -5,7 +5,7 @@
 {% block breadcrumb %}
     <ul class="breadcrumb">
         <li><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>         
-        <li> <a href="{% url 'academic_year' %}">{% trans 'academic_year' %}</a></li>
+        <li> <a href="{% url 'academic_year_management' %}">{% trans 'Academic Years' %}</a></li>
         <li class='active'>{% trans 'academic_year' %}</li>
     </ul>
 {% endblock %}
@@ -14,7 +14,8 @@
     <div class="page-content-wrap">
         <div class="row">
             <div class="col-md-12">
-                <form class="form-horizontal" method="post">
+                <form class="form-horizontal" id="academic-year-form"
+                      action="" method="post">
                     {% csrf_token %}
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -46,18 +47,18 @@
                             {% endfor %}
                         </div>
                     </div>
+                    <div class="panel-footer">
+                        {% include 'save_buttons.html' %}
+                        {% if year_id %}
+                        <input type="submit" class="mb-control btn btn-danger pull-right divider " data-box="#mb-delete" name="delete"
+                        value="Delete"\>
+                        {% endif %}
+                    </div>        
                 </form>
-                <div class="panel-footer">
-                            <input type="submit" class="btn btn-primary pull-right divider" name="save" value="save">
-                            <input type="submit" class="btn btn-primary pull-right divider" name="save_continue" value ="Save and Continue">
-                            <input type="submit" class="btn btn-primary pull-right divider" name="save" value="Save and add another">
-
-                            <input type="submit" class="mb-control btn btn-danger pull-right divider " data-box="#mb-delete" name="delete"
-                            value="Delete" >
-                        </div>        
             </div>
         </div>                    
     </div>
+{% if year_id %}
 <div class="message-box animated fadeIn" id="mb-delete">
     <div class="mb-container">
         <div class="mb-middle">
@@ -73,12 +74,27 @@
             </div>
             <div class="mb-footer">
                 <div class="pull-right">
-                    <a href="{% url 'delete_year' year_id %}" class="btn btn-success btn-lg">Yes</a>
+                    <a href="{% url 'delete_academic_year' year_id %}" class="btn btn-success btn-lg">Yes</a>
                   <button class="btn btn-default btn-lg mb-control-close">No</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-                               
+{% endif %}
+
+{% endblock %}
+{% block bottomjs %}
+    {{block.super}}
+    <script>
+        var jvalidate = $("#academic-year-form").validate({
+            ignore: [],
+            rules: {
+                'name': {
+                    required: true,
+                    maxlength: 48
+                }
+            }                                        
+        });
+    </script>   
 {% endblock %}

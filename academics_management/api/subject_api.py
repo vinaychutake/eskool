@@ -15,6 +15,7 @@ def create_subject(name, status, code):
                     code=code)
     subject.full_clean()
     subject.save()
+    return subject.id
 
 def get_subjects(page_no=1, paginate=True, records_per_page=10):
     """

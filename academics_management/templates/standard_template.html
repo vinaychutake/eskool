@@ -1,114 +1,107 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load staticfiles %}
 
 {% block breadcrumb %}
     <ul class="breadcrumb">
-        <li><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>         
-        <li class="active">{% trans 'Academic Template' %}</li>
+        <li><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>
+        <li> <a href="{% url 'standard_template_management' %}">
+            {% trans 'Standard Templates' %}</a></li>
+        <li class='active'>{% trans 'Standard Template' %}</li>
     </ul>
 {% endblock %}
 
 {% block main_content %}
-
-<div class="page-title">
-    <h2><span class="fa fa-envelope"></span>
-        {% trans 'Academic Template' %}
-    </h2>
-</div>
-
-
-<div class="panel panel-default tabs">                            
-    <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#manage_std_templates" role="tab" data-toggle="tab">
-                {% trans 'Manage' %}
-            </a>
-        </li>
-
-        <!-- <li>
-            <a href="#my_notices" role="tab" data-toggle="tab">
-                {% trans 'Notices' %}
-            </a>
-        </li> -->
-        
-    </ul>
-
-    <div class="panel-body tab-content">
-        <div class="tab-pane active" id="manage_std_templates">
-            {% include 'manage_std_template.html' %}
-        </div>  
+    <div class="page-content-wrap">
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal" action="" id="standard-template-form" method="post">
+                    {% csrf_token %}
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <strong>{{heading}}</strong>
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            {% include 'message.html' %}
+                            {% for field in form %}    
+                                <div class="form-group">
+                                    <label class="col-md-3 col-xs-12 control-label">
+                                        {{field.label}} :
+                                    </label>
+                                    <div class="col-md-6 col-xs-12">           
+                                        <div class="input-group">
+                                            {{field}}
+                                        </div>
+                                        {% if field.errors %}
+                                            {% for error in field.errors %}
+                                                <label for="login" class="error">{{error}}</label>
+                                            {% endfor %}
+                                        {% endif %}                                       
+                                        <span class="help-block">
+                                            {{field.help_text}}
+                                        </span>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="panel-footer">
+                            {% include 'save_buttons.html' %}
+                            {% if template_id %}
+                                <input type="submit" class="mb-control btn btn-danger pull-right divider " data-box="#mb-delete" name="delete"
+                                value="Delete"\>
+                            {% endif %}
+                        </div>  
+                    </div>
+                </form>        
+            </div>
+        </div>                    
     </div>
-</div>
-
-<div class="modal fade" id="noticeModal" tabindex="-1" role="dialog"
-     aria-labelledby="noticeModalLabel">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close"
-                        data-dismiss="modal" aria-hidden="true">&times;</button>
-                 <h4 class="modal-title">{% trans 'Notice' %}</h4>
+{% if template_id %}
+<div class="message-box animated fadeIn" id="mb-delete">
+    <div class="mb-container">
+        <div class="mb-middle">
+            <div class="mb-title">
+                <span class="fa fa-delete"></span>
+                {% trans 'Delete?' %}
             </div>
-            <div class="modal-body">
-                <div class="te"></div>
+            <div class="mb-content">
+                <p>{% trans 'Are you sure you want to delete this standard template.' %} </p>                    
+                <p>
+                    {% trans 'Press Yes if you want to delete. Press No to continue.' %}
+                </p>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <div class="mb-footer">
+                <div class="pull-right">
+                    <a href="{% url 'delete_std_template' template_id %}" class="btn btn-success btn-lg">Yes</a>
+                  <button class="btn btn-default btn-lg mb-control-close">No</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
+{% endif %}
 {% endblock %}
 
 {% block bottomjs %}
-  {{block.super}}
-  <script>
-
-    var currentTemplateId;
-
-    /*$('#my_notices_table').DataTable( {
-        "processing": true,
-        "serverSide": true,
-        "searching": false,
-        "ordering": false,
-        "stateSave": true,
-        "ajax": "{% url 'my_notices' %}"
-    });*/
-
-    $('#manage_std_template_table').DataTable( {
-        "processing": true,
-        "serverSide": true,
-        "searching": false,
-        "ordering": false,
-        "stateSave": true,
-        "ajax": "{% url 'manage_std_templates' %}"
-    } );
-
-
-    $('#manage_std_templates').on('click', '.delete_notice', function(){
-        currentTemplateId = $(this).attr('id');
-        var box = $($(this).data("box"));
-        if(box.length > 0){
-            box.toggleClass("open");
-        }
-        return false;
-     });
-
-    $(".mb-control-close").on("click",function(){
-       $(this).parents(".message-box").removeClass("open");
-       return false;
-    });
-
-    $(".mb-control-delete").on("click",function(){
-        window.location.href = "/am/delete_template/" + currentTemplateId;
-    });
-
-
-    $('.modal').on('hidden.bs.modal', function(e)
-    { 
-        $(this).removeData();
-    });
-
-   </script>
+    {{block.super}}
+    <script>
+        var jvalidate = $("#standard-template-form").validate({
+            ignore: [],
+            rules: {
+                'name': {
+                    required: true,
+                    maxlength: 80
+                },
+                'code': {
+                    required: true,
+                    maxlength: 16
+                },
+                'subjects': {
+                    required: true
+                }
+            }                                        
+        });
+    </script>   
 {% endblock %}

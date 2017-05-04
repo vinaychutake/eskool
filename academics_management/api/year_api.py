@@ -1,36 +1,41 @@
 from academics_management.models import AcademicYear
 from common.utils import paginate_objects
 
-def create_academics_year(name):
-	year = AcademicYear(name=name)
-	year.clean()
-	year.save()
+def create_academics_year(name, status):
+    """
+    """
+    year = AcademicYear(name=name, status=status)
+    year.full_clean()
+    year.save()
+    return year.id
 
-def get_obj(year_id):
-    year = AcademicYear.objects.get(id=year_id)
-    return year
+def get_academic_year_obj(year_id):
+    """
+    """
 
-def get_all_years():
-	academic_years = AcademicYear.objects.all()
-	return paginate_years(academic_years)
+    return AcademicYear.objects.get(id=year_id)
+
+def get_academic_years(records_per_page=10, page_no=1, paginate=True):
+    """
+    """
+
+    academic_years = AcademicYear.objects.exclude(status='D')
+    count = len(academic_years)
+    if paginate:
+        academic_years = paginate_objects(academic_years, records_per_page, page_no)
+    return {'years': academic_years, 'count': count, 'returned_count': len(academic_years)}
 
 def delete_year(year_id):
     """
-
     """
-    year = AcademicYear.objects.get(id=year_id)
+    year = get_academic_year_obj(year_id)
     year.delete()
 
-def update_year(year_id, year_name):
+def update_year(year_id, year_name, status):
 
-    year = AcademicYear.objects.get(id=year_id)
+    year = get_academic_year_obj(year_id)
     year.name = year_name
+    year.status = status
+    year.full_clean()
     year.save()
 
-def paginate_years(years, records_per_page=10, page_no=1, paginate=True):
-    """
-    """
-    count = len(years)
-    if paginate:
-        years = paginate_objects(years, records_per_page, page_no)
-    return {'years': years, 'count': count, 'returned_count': len(years)}
