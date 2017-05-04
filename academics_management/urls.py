@@ -5,12 +5,33 @@ from django.contrib.auth.decorators import login_required
 from academics_management.views import views as academic_views
 from academics_management.views import subject_views as subject_views
 from academics_management.views import year_views
+from academics_management.views import template_views
 
 urlpatterns = [
 
     url(r'academics_management/$',
-        login_required(academic_views.AcademicsManagement.as_view()),
+       login_required(academic_views.AcademicsManagement.as_view()),
         name='academics_management'),
+
+    url(r'standard_template/$',
+    	login_required(template_views.StandardTemplate.as_view()),
+    	name='standard_template'),
+
+    url(r'manage_std_templates/$',
+    	login_required(template_views.ManageSTDTemplate.as_view()),
+    	name='manage_std_templates'),
+
+    url(r'update_template/(?P<std_template_id>\d+)/$',
+    	login_required(template_views.UpdateSTDTemplate.as_view()),
+    	name='update_std_template'),
+
+    url(r'create_template/$',
+        login_required(template_views.CreateSTDTemplate.as_view()),
+        name='create_std_template'),
+
+    url(r'delete_template/(?P<std_template_id>\d+)/$',
+        login_required(template_views.DeleteSTDTemplate.as_view()),
+        name='delete_std_template'),
 
     url(r'subject_management/$',
         login_required(subject_views.SubjectManagement.as_view()),
