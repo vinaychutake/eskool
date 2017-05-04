@@ -19,31 +19,6 @@ class AcademicsYearView(View):
 
         return render(request, "acadamic_year.html")
 
-class CreateAcademicsYear(View):
-    """
-    """
-
-    def get(self, request):
-        """
-        """
-
-        form = AcademicsForm()
-        return render(request, 'new_year.html', {'form': form, 'heading': _('Add')})
-
-    def post(self, request):
-        """
-        """
-
-        form = AcademicsForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data.get('name')
-            print "***************", name
-            year_api.create_academics_year(name)
-            return HttpResponseRedirect(reverse('academic_year'))
-        else:
-            messages.error(request, _('Please correct the errors below.'))
-        return render(request, 'new_year.html', {'form': form, 'heading': _('Add')})
-
 class AcademicYear(View):
     """
     """
@@ -73,26 +48,49 @@ class AcademicYear(View):
 
         return JsonResponse(response)
 
+class CreateAcademicsYear(View):
+    """
+    """
+
+    def get(self, request):
+        """
+        """
+
+        form = AcademicsForm()
+        return render(request, 'new_year.html', {'form': form, 'heading': _('Add')})
+
+    def post(self, request):
+        """
+        """
+
+        form = AcademicsForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data.get('name')
+            year_api.create_academics_year(name)
+            return HttpResponseRedirect(reverse('academic_year'))
+        else:
+            messages.error(request, _('Please correct the errors below.'))
+        return render(request, 'new_year.html', {'form': form, 'heading': _('Add')})
+
 class UpdateYear(View):
+
     def get(self, request, year_id):
         year = year_api.get_obj(year_id)
         form = AcademicsForm({'name':year.name})
-        return render(request, 'new_year.html', {'form': form, 'heading': _('Add')})
-        if form.is_valid():
-            year_id = year_id
-            year_name = form.cleaned_data.get('name','')
-            year_api.update_year(year_id, year_name)#, year_status)
-            return HttpResponseRedirect(reverse('academic_year'))
-        else:
-            return HttpResponseRedirect(reverse('academic_year'))
+        return render(request, 'new_year.html', {'form': form, 'heading': _('Edit'), 'year_id':year_id})
+
     def post(self, request, year_id):
+
         form = AcademicsForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data.get('name')
             year_api.update_year(year_id, name)
             return HttpResponseRedirect(reverse('academic_year'))
+        else:
+            return render(request, 'new_year.html', {'form': form, 'heading': _('Edit'), 'year_id':year_id})
 
 class DeleteYear(View):
+
     def get(self, request, year_id):
         """
         """

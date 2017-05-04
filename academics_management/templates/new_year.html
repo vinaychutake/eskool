@@ -45,12 +45,40 @@
                                 </div>
                             {% endfor %}
                         </div>
-                        <div class="panel-footer">
-                            <button class="btn btn-primary pull-right">Submit</button>
-                        </div>
                     </div>
-                </form>        
+                </form>
+                <div class="panel-footer">
+                            <input type="submit" class="btn btn-primary pull-right divider" name="save" value="save">
+                            <input type="submit" class="btn btn-primary pull-right divider" name="save_continue" value ="Save and Continue">
+                            <input type="submit" class="btn btn-primary pull-right divider" name="save" value="Save and add another">
+
+                            <input type="submit" class="mb-control btn btn-danger pull-right divider " data-box="#mb-delete" name="delete"
+                            value="Delete" >
+                        </div>        
             </div>
         </div>                    
     </div>
+<div class="message-box animated fadeIn" id="mb-delete">
+    <div class="mb-container">
+        <div class="mb-middle">
+            <div class="mb-title">
+                <span class="fa fa-delete"></span>
+                {% trans 'Delete?' %}
+            </div>
+            <div class="mb-content">
+                <p>{% trans 'Are you sure you want to delete this academic year.' %} </p>                    
+                <p>
+                    {% trans 'Press Yes if you want to delete. Press No to continue.' %}
+                </p>
+            </div>
+            <div class="mb-footer">
+                <div class="pull-right">
+                    <a href="{% url 'delete_year' year_id %}" class="btn btn-success btn-lg">Yes</a>
+                  <button class="btn btn-default btn-lg mb-control-close">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                               
 {% endblock %}
