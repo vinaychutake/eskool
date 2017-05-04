@@ -1,6 +1,21 @@
 from common.utils import paginate_objects
 from academics_management.models import Subject
 
+def create_subject(name, status, code):
+    """
+    Creates new subject
+    Params:
+        name: Subjec name
+        status: Active or inactive
+        code: Subject code
+    """
+
+    subject = Subject(name=name,
+                    status=status,
+                    code=code)
+    subject.full_clean()
+    subject.save()
+
 def get_subjects(page_no=1, paginate=True, records_per_page=10):
     """
     Returns subjects for given user
@@ -57,5 +72,5 @@ def update_subject(subject_id, name, status, code):
     subject.name = name
     subject.status = status
     subject.code = code
-    subject.clean()
+    subject.full_clean()
     subject.save()    

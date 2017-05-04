@@ -6,7 +6,7 @@ from django.contrib.humanize.templatetags.humanize import naturaltime
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ObjectDoesNotExist
-
+from django.core.exceptions import ValidationError
 from academics_management.api import subject_api as subject_api
 from academics_management.forms import SubjectForm
 import pdb
@@ -20,6 +20,39 @@ class SubjectManagement(View):
         """
 
         return render(request, "subject_management.html")
+
+class CreateSubject(View):
+    """
+    """
+
+    def get(self, request):
+        """
+        """
+
+        form = SubjectForm(initial={'subject': ' '})
+        return render(request, 'subject.html', {'form': form, 'heading': _('Add')})
+
+    def post(self, request):
+        """
+        """
+        form = SubjectForm(request.POST)
+        if form.is_valid():
+            try:
+                name = form.cleaned_data.get('name')
+                status = form.cleaned_data.get('status')
+                code = form.cleaned_data.get('code')
+                subject_api.create_subject(name, status, code)
+                messages.success(request, _('Subject created successfully.'))
+                return HttpResponseRedirect(reverse('subject_management'))
+            except ValidationError as e:
+                for error,msgs in e:
+                    for msg in msgs:
+                        messages.error(request,msg)
+        else:
+            messages.error(request, _('Please correct the errors below.'))
+                        
+        return render(request, 'subject.html', {'form': form, 'heading': _('Add')})
+
 
 class GetSubjects(View):
     """
@@ -74,12 +107,17 @@ class UpdateSubject(View):
 
         form = SubjectForm(request.POST)
         if form.is_valid():
-            name = form.cleaned_data.get('name')
-            status = form.cleaned_data.get('status')
-            code = form.cleaned_data.get('code')
-            subject_api.update_subject(subject_id, name, status, code)
-            messages.success(request, _('Subject updated successfully.'))
-            return HttpResponseRedirect(reverse('subject_management'))
+            try:
+                name = form.cleaned_data.get('name')
+                status = form.cleaned_data.get('status')
+                code = form.cleaned_data.get('code')
+                subject_api.update_subject(subject_id, name, status, code)
+                messages.success(request, _('Subject updated successfully.'))
+                return HttpResponseRedirect(reverse('subject_management'))
+            except ValidationError as e:
+                for error,msgs in e:
+                    for msg in msgs:
+                        messages.error(request,msg)
         else:
             messages.error(request, _('Please correct the errors below.'))
         return render(request, 'subject.html', {'form': form, 'heading': _('Edit')})

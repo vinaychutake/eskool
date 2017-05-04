@@ -12,11 +12,12 @@ class SubjectForm(forms.Form):
                             required=True,
                             widget=forms.TextInput(attrs={'class':'form-control'}),
                             help_text=_('Maximum 80 characters are allowed'))
-    status = forms.ChoiceField(choices=choices.STATUS_CHOICES,required=True)
-
+    
     code = forms.CharField(max_length=16,
                             required=True,
                             widget=forms.TextInput(attrs={'class':'form-control'}),
                             help_text=_('Maximum 16 characters are allowed'))
+
+    status = forms.ChoiceField(choices=choices.STATUS_CHOICES,required=True)
 
 

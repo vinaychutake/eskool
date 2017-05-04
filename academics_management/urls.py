@@ -25,5 +25,9 @@ urlpatterns = [
 
 	url(r'delete/(?P<subject_id>\d+)/$',
     	login_required(subject_views.DeleteSubject.as_view()),
-    	name='delete_notice'),		 	 
+    	name='delete_subject'),
+
+    url(r'create/$',
+        login_required(subject_views.CreateSubject.as_view()),
+        name='create_subject'),    		 	 
 ]
