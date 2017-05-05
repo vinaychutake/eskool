@@ -3,9 +3,10 @@ from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 
 from academics_management.views import views as academic_views
-from academics_management.views import subject_views as subject_views
+from academics_management.views import subject_views
 from academics_management.views import year_views
 from academics_management.views import template_views
+from academics_management.views import standard_views
 
 urlpatterns = [
 
@@ -72,4 +73,26 @@ urlpatterns = [
     url(r'academic_year/delete/(?P<year_id>\d+)/$',
         login_required(year_views.DeleteYear.as_view()),
         name='delete_academic_year'),
+
+    #Standard urls
+    url(r'standard_management/$',
+        login_required(standard_views.StandardManagement.as_view()),
+        name='standard_management'),
+
+    url(r'standard/$',
+        login_required(standard_views.GetStandards.as_view()),
+        name='standard'),
+
+    url(r'standard/create/$',
+        login_required(standard_views.CreateStandard.as_view()),
+        name='create_standard'),
+
+    url(r'standard/delete/(?P<standard_id>\d+)/$',
+        login_required(standard_views.DeleteStandard.as_view()),
+        name='delete_standard'),
+
+
+
+
+
 ]

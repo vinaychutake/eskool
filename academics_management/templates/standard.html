@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>         
+        <li> <a href="{% url 'standard_management' %}">{% trans 'Standards' %}</a></li>
+        <li class='active'>{% trans 'Standard' %}</li>
+    </ul>
+{% endblock %}
+
+{% block main_content %}
+    <div class="page-content-wrap">
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal" id="standard-form" method="post">
+                    {% csrf_token %}
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <strong>{{heading}}</strong>
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            {% include 'message.html' %}
+                            {% for field in form %}    
+                                <div class="form-group">
+                                    <label class="col-md-3 col-xs-12 control-label">
+                                        {{field.label}} :
+                                    </label>
+                                    <div class="col-md-6 col-xs-12">           
+                                        <div class="input-group">
+                                            {{field}}
+                                        </div>
+                                        {% if field.errors %}
+                                            {% for error in field.errors %}
+                                                <label for="login" class="error">{{error}}</label>
+                                            {% endfor %}
+                                        {% endif %}                                       
+                                        <span class="help-block">
+                                            {{field.help_text}}
+                                        </span>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="panel-footer">
+                            {% include 'save_buttons.html' %}
+                            {% if standard_id %}
+                                <input type="submit" class="mb-control btn btn-danger pull-right divider " data-box="#mb-delete" name="delete"
+                                value="Delete"\>
+                            {% endif %}
+                        </div>        
+                    </div>
+                </form>        
+            </div>
+        </div>                    
+    </div>
+
+{% if standard_id %}
+<div class="message-box animated fadeIn" id="mb-delete">
+    <div class="mb-container">
+        <div class="mb-middle">
+            <div class="mb-title">
+                <span class="fa fa-delete"></span>
+                {% trans 'Delete?' %}
+            </div>
+            <div class="mb-content">
+                <p>{% trans 'Are you sure you want to delete this standard.' %} </p>                    
+                <p>
+                    {% trans 'Press Yes if you want to delete. Press No to continue.' %}
+                </p>
+            </div>
+            <div class="mb-footer">
+                <div class="pull-right">
+                    <a href="{% url 'delete_standard' standard_id %}" class="btn btn-success btn-lg">Yes</a>
+                  <button class="btn btn-default btn-lg mb-control-close">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block bottomjs %}
+    {{block.super}}
+    <script>
+        var jvalidate = $("#standard-form").validate({
+            ignore: [],
+            rules: {
+                'name': {
+                    required: true,
+                    maxlength: 80
+                },
+                'code': {
+                    required: true,
+                    maxlength: 16
+                }
+            }                                        
+        });
+    </script>   
+{% endblock %}
